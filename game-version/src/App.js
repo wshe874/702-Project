@@ -1,4 +1,3 @@
-import Animation from "./component/Animation";
 import Home from "./Pages/Home";
 import Game from "./Pages/Game";
 import Congratulations from "./Pages/Congratulations";
@@ -7,7 +6,6 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 function App() {
-
   return (
     <Router>
       <div className="App">
