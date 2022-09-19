@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Animation from "./component/Animation";
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" style={{display:'flex'}}>
+
+      
+      <div  style={{height:'200px', width:'200px'}}>
+      <Animation stage={0}></Animation>
+      </div>
+      <div  style={{height:'200px', width:'200px'}}>
+      <Animation stage={1}></Animation>
+      </div>
+      <div  style={{height:'200px', width:'200px'}}>
+      <Animation stage={2}></Animation>
+      </div>
+      <div  style={{height:'200px', width:'200px'}}>
+      <Animation stage={3}></Animation>
+      </div>
+      <div  style={{height:'200px', width:'200px'}}>
+      <Animation stage={4}></Animation>
+      </div>
+      <div  style={{height:'200px', width:'200px'}}>
+      <Animation stage={5}></Animation>
+      </div>
     </div>
   );
 }
