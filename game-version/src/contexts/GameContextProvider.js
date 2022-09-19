@@ -6,16 +6,16 @@ const GameContext = createContext(undefined);
 function GameContextProvider({ children }) {
     const [configuration, setConfiguration] = useState([
         {
-            width: 100,
-            height: 50,
+            width: 90,
+            height: 90,
             x: 0,
-            y: 0,
+            y: 90,
         },
         {
-            width: 50,
-            height: 50,
-            x: 50,
-            y: 50,
+            width: 90,
+            height: 90,
+            x: 0,
+            y: 180,
         },
         {
             width: 300,

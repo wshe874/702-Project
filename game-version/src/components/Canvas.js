@@ -3,9 +3,10 @@ import { GameContext } from '../contexts/GameContextProvider';
 import SizeableDraggableBox from './SizeableDraggableBox';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
-import backgroundImg from '../images/blank_canvas.png';
 import logo from '../images/uoa_white_logo.png';
 import { Typography } from '@mui/material';
+import ProfileButton from './ProfileButton';
+import DashboardButton from './DashboardButton';
 
 function Canvas() {
     const { configuration, changePosition, changeSize } = useContext(GameContext);
@@ -19,8 +20,8 @@ function Canvas() {
             <SideBar />
             <Typography variant='h5' component='div' sx={{
                 position: 'absolute',
-                top: 20,
-                left: 100
+                top: 30,
+                left: 115
             }}>
                 Dashboard
             </Typography>
@@ -36,9 +37,21 @@ function Canvas() {
                     changeSize(0, width, height);
                 }}
             >
-                <button>
-                    Button
-                </button>
+                <ProfileButton disabled={true} />
+            </SizeableDraggableBox>
+            <SizeableDraggableBox
+                x={configuration[1].x}
+                y={configuration[1].y}
+                width={configuration[1].width}
+                height={configuration[1].height}
+                onPositionChange={(newX, newY) => {
+                    changePosition(1, newX, newY);
+                }}
+                onSizeChange={(width, height) => {
+                    changeSize(1, width, height);
+                }}
+            >
+                <DashboardButton disabled={true} />
             </SizeableDraggableBox>
         </Paper>
     )
@@ -47,8 +60,7 @@ function Canvas() {
 function SideBar() {
     return (
         <Box sx={{
-            width: 75,
-            height: 76,
+            width: 90,
             position: 'absolute',
             height: 'inherit',
             bgcolor: '#00457c',

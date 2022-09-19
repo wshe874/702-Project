@@ -15,7 +15,6 @@ function SizeableDraggableBox({ x, y, width, height, onPositionChange, onSizeCha
 
     return (
         <Rnd
-            style={{border: "solid 1px black"}}
             size={{ width: width, height: height }}
             position={{ x: x, y: y }}
             onDragStop={onDragStop}
