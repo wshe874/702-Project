@@ -1,12 +1,26 @@
 import React, { useContext } from 'react';
 import { GameContext } from '../contexts/GameContextProvider';
 import SizeableDraggableBox from './SizeableDraggableBox';
+import Paper from '@mui/material/Paper';
+import Box from '@mui/material/Box';
+import backgroundImg from '../images/blank_canvas.png';
 
 function Canvas() {
     const { configuration, changePosition, changeSize } = useContext(GameContext);
 
     return (
-        <div style={{width:500, height: 500}}>
+        <Paper sx={{
+            width: 1,
+            height: 1,
+        }}>
+            <Box 
+                sx={{
+                    width: 1,
+                }}
+                component='img'
+                alt="Canvas image"
+                src={backgroundImg}
+            />
             <SizeableDraggableBox 
                 x={configuration[0].x} 
                 y={configuration[0].y}
@@ -23,7 +37,7 @@ function Canvas() {
                     Button
                 </button>
             </SizeableDraggableBox>
-        </div>
+        </Paper>                
     )
 }
 
