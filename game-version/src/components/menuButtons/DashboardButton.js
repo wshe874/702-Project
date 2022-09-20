@@ -1,6 +1,6 @@
-import { Box, Button, colors, Typography } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 import React from 'react';
-import meterImg from '../images/speedometer.png';
+import meterImg from '../../images/speedometer.png';
 
 function DashboardButton({ disabled }) {
     return (

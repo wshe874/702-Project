@@ -4,6 +4,7 @@ import Congratulations from "./Pages/Congratulations";
 import NotFound from "./Pages/NotFound";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import LevelPage from "./Pages/LevelPage";
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
         </nav>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/game" element={<Game />} />
+          <Route path="/game" element={<LevelPage />} />
           <Route path="/congratulations" element={<Congratulations />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

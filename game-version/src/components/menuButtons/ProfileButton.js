@@ -1,6 +1,6 @@
-import { Box, Button, colors, Typography } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 import React from 'react';
-import profileImg from '../images/account.png';
+import profileImg from '../../images/account.png';
 
 function ProfileButton({ disabled }) {
     return (

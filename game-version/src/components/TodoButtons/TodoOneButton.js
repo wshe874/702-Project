@@ -1,4 +1,4 @@
-import { Box, Button, Card, Grid, Typography } from '@mui/material';
+import { Box, Button, Card, Typography } from '@mui/material';
 import React from 'react';
 import announcementsImage from '../../images/megaphone.png';
 import CloseIcon from '@mui/icons-material/Close';
