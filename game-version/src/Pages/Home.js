@@ -3,7 +3,7 @@ import Animation from "../components/Animation";
 import Grid from '@mui/material/Grid';
 import { Box, Button } from "@mui/material";
 
-function Home2() {
+function Home() {
 
   return(
   <>
@@ -23,7 +23,9 @@ function Home2() {
             <Button sx={{color: 'black', backgroundColor: '#b3db59'}} variant="outlined" size="large" disableRipple>Start</Button>
           </Grid>
           <Grid container direction="column" justifyContent='center' alignItems='center' item xs={6}>
-            <p>plant</p>
+            <div style={{ height: "600px", width: "600px" }}>
+              <Animation stage={0}></Animation>
+            </div>
           </Grid>
         </Grid>
       </Box>
@@ -32,7 +34,7 @@ function Home2() {
 }
 
 
-function Home() {
+function Home2() {
   return (
     <div>
       Welcome
