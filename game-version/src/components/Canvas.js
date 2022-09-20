@@ -5,7 +5,7 @@ import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import logo from '../images/uoa_white_logo.png';
 import { Button, Typography } from '@mui/material';
-import { activatedButtonsAt } from '../utils/gameUtils';
+import { activatedButtonsAt, calculateId } from '../utils/gameUtils';
 
 function Canvas() {
     const numPrompts = 6;
@@ -18,6 +18,7 @@ function Canvas() {
     const [state, setState] = useState('prepare');
     const [time, setTime] = useState(0);
     const [start, setStart] = useState(false);
+    const [averageMovementTime, setAverageMovementTime] = useState(0);
     const [results, setResults] = useState([]);
 
     useEffect(() => {
@@ -37,50 +38,76 @@ function Canvas() {
         if (state === 'start') {
             setPrompt(1);
         } else if (state === 'done') {
-            console.log("Should submit results");
             setPrompt(0);
         }
     }, [state]);
 
     useEffect(() => {
-        if (clicks >= numClicks) {
-            console.log("Should compute results");
-
-            setClicks(0);
-            setPrompt(p => p + 1);
-        }
-    }, [clicks]);
-
-    useEffect(() => {
-        console.log(`Prompt: ${prompt}`)
-        if (prompt > 0 && prompt <= numPrompts) {
+        if (clicks % 2 === 0) {
             setStart(false);
+            setTime(0);
+        } else {
             setTime(0);
             setStart(true);
+        }
 
-        } else if (prompt > numPrompts) {
+        if (clicks >= numClicks) {
+            setClicks(0);
+            setPrompt(p => p + 1);
+
             setStart(false);
             setTime(0);
-            setPrompt(0);
-            setState('done');
+            
+            const x1 = (configuration[activatedButtons.second].x + configuration[activatedButtons.second].width) / 2;
+            const y1 = (configuration[activatedButtons.second].y + configuration[activatedButtons.second].height) / 2;
+
+            const x2 = (configuration[activatedButtons.first].x + configuration[activatedButtons.first].width) / 2;
+            const y2 = (configuration[activatedButtons.first].y + configuration[activatedButtons.first].height) / 2;
+
+            const distance = Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2))
+
+            setResults([...results, {
+                averageMovementTime: averageMovementTime,
+                id: calculateId(configuration[activatedButtons.second].width, distance)
+            }])
         }
-        console.log(activatedButtonsAt(prompt));
+
+    }, [clicks, activatedButtons, averageMovementTime, configuration, results]);
+
+    useEffect(() => {
+        console.log(results);
+    }, [results])
+
+    useEffect(() => {
+        if (prompt > numPrompts) {
+            console.log('Needs to record a prompt result');
+            setPrompt(0);
+            setState('prepare');
+        }
+
         setActivatedButtons(activatedButtonsAt(prompt));
     }, [prompt]);
 
     const onClick = () => {
-        console.log(`Clicked: ${clicks}`);
-        setClicks(clicks + 1);
+        const newClicks = clicks + 1;
+
+        if (newClicks % 2 === 0) {
+            const size = newClicks / 2 - 1;
+            const average = (size * averageMovementTime + time) / (size + 1);
+            setAverageMovementTime(average);
+        }
+
+        setClicks(newClicks);
     };
 
     // Not sure if this is the right way to be called from the component itself
     // Overhead??
-    const isEnabled = (index) => {
+    const isDisabled = (index) => {
         if (state === 'prepare') {
             return true;
         }
 
-        if (index === activatedButtons.first && clicks % 2 === 0 ) {
+        if (index === activatedButtons.first && clicks % 2 === 0) {
             return false;
         }
 
@@ -105,7 +132,7 @@ function Canvas() {
             }}>
                 Dashboard
             </Typography>
-            <Button onClick={() => {setState('start')}} >Mock start</Button>
+            <Button onClick={() => { setState('start') }} >Mock start</Button>
             {configuration.map(({ Button, width, height, x, y, boundary }, index) => {
                 return (
                     <SizeableDraggableBox
@@ -123,7 +150,7 @@ function Canvas() {
                         }}
                         active={state === 'prepare'}
                     >
-                        <Button disabled={isEnabled(index)} onClick={onClick} />
+                        <Button disabled={isDisabled(index)} onClick={onClick} />
                     </SizeableDraggableBox>
                 );
             })}

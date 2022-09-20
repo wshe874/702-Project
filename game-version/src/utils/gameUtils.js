@@ -124,4 +124,8 @@ const activatedButtonsAt = (prompt) => {
     return activatedButtons;
 }
 
-export { getInitialConfiguration, activatedButtonsAt };
+const calculateId = (width, distance) => {
+    return Math.log(distance / width + 1) / Math.log(2);
+}
+
+export { getInitialConfiguration, activatedButtonsAt, calculateId };

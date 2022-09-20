@@ -7,9 +7,10 @@ function CourseTwoButton({ disabled, onClick }) {
   return (
     <Card sx={{
       borderRadius: 2,
-      height: 1
+      height: 1,
+      boxShadow: !disabled && "0 0 10px 10px #B3DB59",
     }}>
-      <Button  variant='contained' disableRipple disabled={disabled} onClick={onClick} sx={{
+      <Button  variant='text' disableRipple disabled={disabled} onClick={onClick} sx={{
         width: 1,
         height: 1,
         p: 0,

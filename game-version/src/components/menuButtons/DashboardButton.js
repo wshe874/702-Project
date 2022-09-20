@@ -4,7 +4,7 @@ import meterImg from '../../images/speedometer.png';
 
 function DashboardButton({ disabled, onClick }) {
     return (
-        <Button variant="contained" disableElevation disableRipple disabled={disabled} onClick={onClick} sx={{
+        <Button variant="text" disableElevation disableRipple disabled={disabled} onClick={onClick} sx={{
             width: 1,
             height: 1,
             bgcolor: '#00457c',
@@ -14,6 +14,7 @@ function DashboardButton({ disabled, onClick }) {
             '&:active': {
                 backgroundColor: '#00213D'
             },
+            boxShadow: !disabled && "0 0 10px 10px #B3DB59",
         }}>
             <Box sx={{
                 display: 'flex',
