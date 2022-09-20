@@ -20,14 +20,26 @@ function GameContextProvider({ children }) {
         {
             width: 262,
             height: 285,
-            x: 500,
-            y: 200,
+            x: 300,
+            y: 250,
         },
         {
             width: 262,
             height: 285,
-            x: 800,
-            y: 200,
+            x: 600,
+            y: 250,
+        },
+        {
+            width: 215,
+            height: 140,
+            x: 1000,
+            y: 150,
+        },
+        {
+            width: 215,
+            height: 170,
+            x: 1000,
+            y: 300,
         }
     ]);
     console.log(configuration);
