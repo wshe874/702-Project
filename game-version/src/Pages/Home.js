@@ -2,6 +2,7 @@ import React from "react";
 import Animation from "../components/Animation";
 import Grid from '@mui/material/Grid';
 import { Box, Button } from "@mui/material";
+import { Link } from 'react-router-dom'
 
 function Home() {
 
@@ -20,7 +21,7 @@ function Home() {
           <Grid container
               direction="column" justifyContent='center' alignItems='center' item xs={6}>
             <h1>Game of Fitts'</h1>
-            <Button sx={{color: 'black', backgroundColor: '#b3db59'}} variant="outlined" size="large" disableRipple>Start</Button>
+            <Button component={Link} to="/game" sx={{color: 'black', backgroundColor: '#b3db59'}} variant="outlined" size="large" disableRipple>Start</Button>
           </Grid>
           <Grid container direction="column" justifyContent='center' alignItems='center' item xs={6}>
             <div style={{ height: "600px", width: "600px" }}>
