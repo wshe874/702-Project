@@ -7,6 +7,8 @@ import logo from '../images/uoa_white_logo.png';
 import { Typography } from '@mui/material';
 import ProfileButton from './ProfileButton';
 import DashboardButton from './DashboardButton';
+import CourseOneButton from './CourseOneButton';
+import CourseTwoButton from './CourseTwoButton';
 
 function Canvas() {
     const { configuration, changePosition, changeSize } = useContext(GameContext);
@@ -52,6 +54,34 @@ function Canvas() {
                 }}
             >
                 <DashboardButton disabled={true} />
+            </SizeableDraggableBox>
+            <SizeableDraggableBox
+                x={configuration[2].x}
+                y={configuration[2].y}
+                width={configuration[2].width}
+                height={configuration[2].height}
+                onPositionChange={(newX, newY) => {
+                    changePosition(2, newX, newY);
+                }}
+                onSizeChange={(width, height) => {
+                    changeSize(2, width, height);
+                }}
+            >
+                <CourseOneButton disabled={true} />
+            </SizeableDraggableBox>
+            <SizeableDraggableBox
+                x={configuration[3].x}
+                y={configuration[3].y}
+                width={configuration[3].width}
+                height={configuration[3].height}
+                onPositionChange={(newX, newY) => {
+                    changePosition(3, newX, newY);
+                }}
+                onSizeChange={(width, height) => {
+                    changeSize(3, width, height);
+                }}
+            >
+                <CourseTwoButton disabled={true} />
             </SizeableDraggableBox>
         </Paper>
     )
