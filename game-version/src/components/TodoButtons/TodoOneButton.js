@@ -3,7 +3,7 @@ import React from 'react';
 import announcementsImage from '../../images/megaphone.png';
 import CloseIcon from '@mui/icons-material/Close';
 
-function TodoOneButton({ disabled }) {
+function TodoOneButton({ disabled, onClick }) {
     return (
         <Card sx={{
             borderRadius: 2,
@@ -15,11 +15,11 @@ function TodoOneButton({ disabled }) {
                 width: 1,
                 textAlign: 'left',
             }}>
-                <Button variant='text' disableRipple disabled={disabled} sx={{
+                <Button  variant='contained' disableRipple disabled={disabled} onClick={onClick} sx={{
                     width: 1,
                     height: 1,
                     textAlign: 'left',
-                    'text-transform': 'none',
+                    textTransform: 'none',
                 }}>
                     <Box
                         sx={{

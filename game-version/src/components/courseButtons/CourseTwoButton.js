@@ -1,20 +1,20 @@
-import { Box, Button, Card, Grid, Typography } from '@mui/material';
+import { Box, Button, Card, Typography } from '@mui/material';
 import React from 'react';
 import img from '../../images/business-case.png';
 import IconList from '../IconList';
 
-function CourseTwoButton({ disabled }) {
+function CourseTwoButton({ disabled, onClick }) {
   return (
     <Card sx={{
       borderRadius: 2,
       height: 1
     }}>
-      <Button variant='text' disableRipple disabled={disabled} sx={{
+      <Button  variant='contained' disableRipple disabled={disabled} onClick={onClick} sx={{
         width: 1,
         height: 1,
         p: 0,
         alignItems: 'start',
-        'text-transform': 'none',
+        textTransform: 'none',
         textAlign: 'left',
       }}>
         <Box sx={{

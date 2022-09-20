@@ -2,7 +2,6 @@ import { Box } from '@mui/material'
 import React from 'react'
 
 function Boundary({ top, left, width, height, className }) {
-    console.log(top, left, width, height, className)
     return (
         <Box className={className} sx={{
             position: 'absolute',

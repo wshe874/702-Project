@@ -2,9 +2,9 @@ import { Box, Button, Typography } from '@mui/material';
 import React from 'react';
 import profileImg from '../../images/account.png';
 
-function ProfileButton({ disabled }) {
+function ProfileButton({ disabled, onClick }) {
     return (
-        <Button variant="contained" disableElevation disableRipple disabled={disabled} sx={{
+        <Button variant="contained" disableElevation disableRipple disabled={disabled} onClick={onClick} sx={{
             width: 1,
             height: 1,
             bgcolor: '#00457c',
@@ -30,7 +30,7 @@ function ProfileButton({ disabled }) {
                     src={profileImg}
                 />
                 <Typography variant='subtitle1' component='div' sx={{
-                    'text-transform': 'none',
+                    textTransform: 'none',
                     color: 'white',
                 }}>
                     Account
