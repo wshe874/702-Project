@@ -13,7 +13,27 @@ function GameLogicContextProvider({ children }) {
   const [numFails, setNumFails] = useState(0);
 
   console.log("in context numfails " + numFails);
+  console.log("pre vioud id" + previousID);
+  console.log("plant stage "+plantStage);
   console.log(gameResults);
+  console.log("game progress "+gameProgress);
+
+  const determineFinishByFails = () => {
+    if (numFails === 3) {
+      setGameProgress(gameStatus.FINISHED);
+      setPlantStage(5);
+    } else {
+      setNumFails(numFails + 1);
+    }
+  };
+
+  const onSuccessfulAttempt = (params) => {
+    setGameRounds(gameRounds + 1);
+    setPreviousID(params.newID);
+    setPlantStage(params.stage);
+    setNumFails(0);
+    setGameResults([...gameResults, params.results]);
+  };
 
   const updateGameStatus = (results) => {
     let newID = 0;
@@ -27,60 +47,67 @@ function GameLogicContextProvider({ children }) {
       switch (gameRounds) {
         case 1:
           if (differenceInID > 0.2) {
-            setGameRounds(gameRounds + 1);
-            setPreviousID(newID);
-            setPlantStage(1);
-            setNumFails(0);
-            setGameResults([...gameResults, results]);
+            onSuccessfulAttempt({results:results,newID:newID,stage:1});
+            // setGameRounds(gameRounds + 1);
+            // setPreviousID(newID);
+            // setPlantStage(1);
+            // setNumFails(0);
+            // setGameResults([...gameResults, results]);
           } else {
-            if (numFails === 3) {
-              setGameProgress(gameStatus.FINISHED);
-              setPlantStage(5);
-            } else {
-              setNumFails(numFails + 1);
-            }
+            determineFinishByFails();
+            // if (numFails === 3) {
+            //   setGameProgress(gameStatus.FINISHED);
+            //   setPlantStage(5);
+            // } else {
+            //   setNumFails(numFails + 1);
+            // }
           }
           break;
         case 2:
           if (differenceInID > 0.2) {
-            setGameRounds(gameRounds + 1);
-            setPreviousID(newID);
-            setPlantStage(2);
-            setNumFails(0);
-            setGameResults([...gameResults, results]);
+            onSuccessfulAttempt({results:results,newID:newID,stage:2});
+            // setGameRounds(gameRounds + 1);
+            // setPreviousID(newID);
+            // setPlantStage(2);
+            // setNumFails(0);
+            // setGameResults([...gameResults, results]);
           } else {
-            if (numFails === 3) {
-              setGameProgress(gameStatus.FINISHED);
-              setPlantStage(5);
-            } else {
-              setNumFails(numFails + 1);
-            }
+            determineFinishByFails();
+            // if (numFails === 3) {
+            //   setGameProgress(gameStatus.FINISHED);
+            //   setPlantStage(5);
+            // } else {
+            //   setNumFails(numFails + 1);
+            // }
           }
           break;
         case 3:
           if (differenceInID > 0.2) {
+            onSuccessfulAttempt({results:results,newID:newID,stage:3});
             setGameProgress(gameStatus.FINISHED);
-            setPlantStage(3);
-            setGameResults([...gameResults, results]);
+            // setPlantStage(3);
+            // setGameResults([...gameResults, results]);
           } else {
-            if (numFails === 3) {
-              setGameProgress(gameStatus.FINISHED);
-              setPlantStage(5);
-            } else {
-              setNumFails(numFails + 1);
-            }
+            determineFinishByFails();
+            // if (numFails === 3) {
+            //   setGameProgress(gameStatus.FINISHED);
+            //   setPlantStage(5);
+            // } else {
+            //   setNumFails(numFails + 1);
+            // }
           }
           break;
         default:
           break;
       }
     } else {
-      if (numFails === 3) {
-        setGameProgress(gameStatus.FINISHED);
-        setPlantStage(5);
-      } else {
-        setNumFails(numFails + 1);
-      }
+      determineFinishByFails();
+      // if (numFails === 3) {
+      //   setGameProgress(gameStatus.FINISHED);
+      //   setPlantStage(5);
+      // } else {
+      //   setNumFails(numFails + 1);
+      // }
     }
   };
 
