@@ -12,12 +12,6 @@ function GameLogicContextProvider({ children }) {
   const [plantStage, setPlantStage] = useState(0);
   const [numFails, setNumFails] = useState(0);
 
-  console.log("in context numfails " + numFails);
-  console.log("pre vioud id" + previousID);
-  console.log("plant stage "+plantStage);
-  console.log(gameResults);
-  console.log("game progress "+gameProgress);
-
   const determineFinishByFails = () => {
     if (numFails === 3) {
       setGameProgress(gameStatus.FINISHED);
@@ -46,55 +40,25 @@ function GameLogicContextProvider({ children }) {
       const differenceInID = previousID - newID;
       switch (gameRounds) {
         case 1:
-          if (differenceInID > 0.2) {
+          if (differenceInID/previousID > 0.1) {
             onSuccessfulAttempt({results:results,newID:newID,stage:1});
-            // setGameRounds(gameRounds + 1);
-            // setPreviousID(newID);
-            // setPlantStage(1);
-            // setNumFails(0);
-            // setGameResults([...gameResults, results]);
           } else {
             determineFinishByFails();
-            // if (numFails === 3) {
-            //   setGameProgress(gameStatus.FINISHED);
-            //   setPlantStage(5);
-            // } else {
-            //   setNumFails(numFails + 1);
-            // }
           }
           break;
         case 2:
-          if (differenceInID > 0.2) {
+          if (differenceInID/previousID > 0.15) {
             onSuccessfulAttempt({results:results,newID:newID,stage:2});
-            // setGameRounds(gameRounds + 1);
-            // setPreviousID(newID);
-            // setPlantStage(2);
-            // setNumFails(0);
-            // setGameResults([...gameResults, results]);
           } else {
             determineFinishByFails();
-            // if (numFails === 3) {
-            //   setGameProgress(gameStatus.FINISHED);
-            //   setPlantStage(5);
-            // } else {
-            //   setNumFails(numFails + 1);
-            // }
           }
           break;
         case 3:
-          if (differenceInID > 0.2) {
+          if (differenceInID/previousID > 0.18) {
             onSuccessfulAttempt({results:results,newID:newID,stage:3});
             setGameProgress(gameStatus.FINISHED);
-            // setPlantStage(3);
-            // setGameResults([...gameResults, results]);
           } else {
             determineFinishByFails();
-            // if (numFails === 3) {
-            //   setGameProgress(gameStatus.FINISHED);
-            //   setPlantStage(5);
-            // } else {
-            //   setNumFails(numFails + 1);
-            // }
           }
           break;
         default:
@@ -102,12 +66,6 @@ function GameLogicContextProvider({ children }) {
       }
     } else {
       determineFinishByFails();
-      // if (numFails === 3) {
-      //   setGameProgress(gameStatus.FINISHED);
-      //   setPlantStage(5);
-      // } else {
-      //   setNumFails(numFails + 1);
-      // }
     }
   };
 

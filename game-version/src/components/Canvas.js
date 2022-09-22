@@ -70,7 +70,6 @@ function Canvas() {
             const y2 = (configuration[activatedButtons.first].y + configuration[activatedButtons.first].height) / 2;
 
             const distance = Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2))
-
             setResults([...results, {
                 averageMovementTime: averageMovementTime,
                 id: calculateId(configuration[activatedButtons.second].width, distance),
