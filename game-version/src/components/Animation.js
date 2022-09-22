@@ -5,6 +5,7 @@ import Lottie from "lottie-react";
 
 export default function Animation(props) {
   const stage = props.stage;
+  
   let segmentArray = [];
   switch (stage) {
     case 0:
@@ -32,14 +33,14 @@ export default function Animation(props) {
   const lottieRef = useRef();
 
   useEffect(()=>{
-    lottieRef.current.setSpeed(0.3);
+    lottieRef.current.setSpeed(0.1);
     lottieRef.current.playSegments(segmentArray,true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[lottieRef]);
+  },[lottieRef, segmentArray]);
 
   return (
     <div>
-      <Lottie lottieRef={lottieRef} animationData={stage===5 ? plantDies:plant} loop={false}/>
+      <Lottie lottieRef={lottieRef} animationData={stage===5 ? plantDies:plant} loop={true}/>
     </div>
   );
 }
