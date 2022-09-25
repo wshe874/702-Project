@@ -24,8 +24,8 @@ function SizeableDraggableBox({ x, y, width, height, onPositionChange, onSizeCha
             <Rnd
                 size={{ width: width, height: height }}
                 position={{ x: x, y: y }}
-                onDragStop={onDragStop}
-                onResizeStop={onResizeStop}
+                onDrag={onDragStop}
+                onResize={onResizeStop}
                 enableResizing={active}
                 disableDragging={!active}
             >
