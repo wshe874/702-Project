@@ -9,10 +9,12 @@ function DashboardButton({ disabled, onClick }) {
             height: 1,
             bgcolor: '#00457c',
             '&:hover': {
-                backgroundColor: '#003666'
+                backgroundColor: '#003666',
+                boxShadow: !disabled && "0 0 10px 10px #B3DB59",
+
             },
             '&:active': {
-                backgroundColor: '#00213D'
+                backgroundColor: '#00213D',                
             },
             boxShadow: !disabled && "0 0 10px 10px #B3DB59",
         }}>
