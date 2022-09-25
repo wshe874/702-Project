@@ -9,7 +9,7 @@ import { activatedButtonsAt, calculateId } from '../utils/gameUtils';
 
 function Canvas() {
     const numPrompts = 6;
-    const numClicks = 12;
+    const numClicks = 6;
 
     const { configuration, changePosition, changeSize } = useContext(GameContext);
     const [prompt, setPrompt] = useState(0);
