@@ -13,15 +13,42 @@ const SideMenu = () => {
     setLocalPlantStage(plantStage);
   },[plantStage, setPlantStage, setLocalPlantStage, localPlantStage]);
 
+  const readyBtn = {
+    color: 'black', backgroundColor: '#b3db59', marginTop: '30px', marginBottom: '40px'
+  }
+
 
   return (
     <Card sx={{ width: '100%', height: '100%', background: '#f4f4f4', boxShadow: 'none', borderRadius: '1rem' }}>
-      <CardContent>
-        <Button sx={{color: 'black', backgroundColor: '#b3db59', marginTop: '30px', marginBottom: '40px'}} variant="outlined" size="large" disableRipple>Ready</Button>
-        <SideMenuTable/>
-        <Animation stage={localPlantStage}></Animation>
+      <CardContent sx={{height: '95%'}}>
+        <Grid container
+          direction="column"
+          justifyContent="space-around"
+          alignItems="center"
+          sx={{border: '1px solid green', height: '100%', width: '100%', position: 'relative'}}>
+
+          <Grid item
+              direction="column"
+              justifyContent="space-around"
+              alignItems="stretch" 
+              xs={8} md={8} sx={{border: '5px solid blue'}}>
+              <Grid item xs={4} md={4}>
+                <Button sx={readyBtn} variant="outlined" size="large" disableRipple>Ready</Button>
+              </Grid>
+
+              <Grid item xs={4} md={4}>
+                <SideMenuTable/>
+              </Grid>
+          </Grid>
+
+          <Grid item xs={4} md={4} alignItems="stretch" sx={{position: 'relative', width: '100%', textAlign: 'center', border: '3px solid yellow'}}>
+              <div style={{border: '1px solid red', position: 'absolute', bottom: '0', display: 'block', margin: 'auto 0', width: '100%'}}>
+                <Animation stage={localPlantStage}></Animation>
+              </div>
+          </Grid>
+
+        </Grid>
       </CardContent>
-      
     </Card>
   );
 };

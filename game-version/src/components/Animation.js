@@ -36,12 +36,10 @@ export default function Animation(props) {
   }, [lottieRef, segmentArray]);
 
   return (
-    <div>
-      <Lottie
+    <Lottie
         lottieRef={lottieRef}
         animationData={stage === 4 ? plantDies : plant}
         loop={true}
       />
-    </div>
   );
 }
