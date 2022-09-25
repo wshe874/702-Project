@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { GameContextProvider } from './contexts/GameContextProvider';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { GameLogicContextProvider } from './contexts/GameLogicContextProvider';
 
 const theme = createTheme({
   palette: {
@@ -21,9 +22,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
+      <GameLogicContextProvider>
       <GameContextProvider>
         <App />
       </GameContextProvider>
+      </GameLogicContextProvider>
     </ThemeProvider>
   </React.StrictMode>
 );

@@ -8,7 +8,13 @@ function SizeableDraggableBox({ x, y, width, height, onPositionChange, onSizeCha
     };
 
     const onResizeStop = (e, direction, ref, delta, position) => {
-        onSizeChange(ref.style.width, ref.style.height);
+        const width = ref.style.width;
+        const tempWidth = parseInt(width.substring(0, width.length-2));
+
+        const height = ref.style.height;
+        const tempHeight = parseInt(height.substring(0,height.length-2));
+
+        onSizeChange(tempWidth, tempHeight);
 
         //Reset coordinates because onDragStop will always be called when onResizeStop is called and messes up the position
         onDragStop(e, position);

@@ -3,7 +3,6 @@ import React from 'react';
 import profileImg from '../../images/account.png';
 
 function ProfileButton({ disabled, onClick }) {
-    console.log(disabled);
     return (
         <Button variant="text" disableElevation disableRipple disabled={disabled} onClick={onClick} sx={{
             width: 1,

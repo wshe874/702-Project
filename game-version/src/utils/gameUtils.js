@@ -2,8 +2,8 @@ import CourseOneButton from "../components/courseButtons/CourseOneButton";
 import CourseTwoButton from "../components/courseButtons/CourseTwoButton";
 import DashboardButton from "../components/menuButtons/DashboardButton";
 import ProfileButton from "../components/menuButtons/ProfileButton";
-import TodoOneButton from "../components/todoButtons/TodoOneButton";
-import TodoTwoButton from "../components/todoButtons/TodoTwoButton";
+import TodoOneButton from "../components/TodoButtons/TodoOneButton";
+import TodoTwoButton from "../components/TodoButtons/TodoTwoButton";
 
 const menuBoundary = {
     className: 'menuBoundary',
@@ -128,4 +128,28 @@ const calculateId = (width, distance) => {
     return Math.log(distance / width + 1) / Math.log(2);
 }
 
-export { getInitialConfiguration, activatedButtonsAt, calculateId };
+const initialTotalID = ()=>{
+    let index = 1;
+    let indexOfDifficulty = 0;
+    while(index < 7){
+        const activatedButtons = activatedButtonsAt(index);
+        const x1 = (initialConfiguration[activatedButtons.second].x + initialConfiguration[activatedButtons.second].width) / 2;
+        const y1 = (initialConfiguration[activatedButtons.second].y + initialConfiguration[activatedButtons.second].height) / 2;
+
+        const x2 = (initialConfiguration[activatedButtons.first].x + initialConfiguration[activatedButtons.first].width) / 2;
+        const y2 = (initialConfiguration[activatedButtons.first].y + initialConfiguration[activatedButtons.first].height) / 2;
+
+        const distance = Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+        indexOfDifficulty += calculateId(initialConfiguration[activatedButtons.second].width, distance)
+        index++;
+    }
+    return indexOfDifficulty;
+}
+
+const gameStatus = {
+    NOT_OPEN:'Not Open',
+    IN_PROGRESS:'In Progress',
+    FINISHED:'Finished'
+}
+
+export { getInitialConfiguration, activatedButtonsAt, calculateId, initialTotalID, gameStatus };
