@@ -18,32 +18,32 @@ function Congratulations() {
       {
         label: "Prompt 1",
         data: placeholderGameData.map((data) => data.promptTimes[0]),
-        backgroundColor: ["green"],
+        backgroundColor: ["#AF81C9"],
       },
       {
         label: "Prompt 2",
         data: placeholderGameData.map((data) => data.promptTimes[1]),
-        backgroundColor: ["red"],
+        backgroundColor: ["#F89A7E"],
       },
       {
         label: "Prompt 3",
         data: placeholderGameData.map((data) => data.promptTimes[2]),
-        backgroundColor: ["brown"],
+        backgroundColor: ["#F2CA85"],
       },
       {
         label: "Prompt 4",
         data: placeholderGameData.map((data) => data.promptTimes[3]),
-        backgroundColor: ["blue"],
+        backgroundColor: ["#54D1F1"],
       },
       {
         label: "Prompt 5",
         data: placeholderGameData.map((data) => data.promptTimes[4]),
-        backgroundColor: ["purple"],
+        backgroundColor: ["#7C71AD"],
       },
       {
         label: "Prompt 6",
         data: placeholderGameData.map((data) => data.promptTimes[5]),
-        backgroundColor: ["orange"],
+        backgroundColor: ["#445569"],
       },
     ],
   });
