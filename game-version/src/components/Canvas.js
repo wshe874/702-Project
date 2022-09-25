@@ -5,21 +5,26 @@ import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import logo from '../images/uoa_white_logo.png';
 import { Button, Typography } from '@mui/material';
-import { activatedButtonsAt, calculateId } from '../utils/gameUtils';
+import { activatedButtonsAt, calculateId, gameStatus } from '../utils/gameUtils';
+import { GameLogicContext } from '../contexts/GameLogicContextProvider';
+import {useNavigate} from 'react-router-dom';
+
 
 function Canvas() {
     const numPrompts = 6;
-    const numClicks = 12;
+    const numClicks = 2;
 
     const { configuration, changePosition, changeSize } = useContext(GameContext);
+    const {gameProgress,gameRounds, updateGameStatus} = useContext(GameLogicContext);
     const [prompt, setPrompt] = useState(0);
     const [activatedButtons, setActivatedButtons] = useState(activatedButtonsAt(prompt));
     const [clicks, setClicks] = useState(0);
-    const [state, setState] = useState('prepare');
+    const [state, setState] = useState('prepare'); //prepare, start, done
     const [time, setTime] = useState(0);
     const [start, setStart] = useState(false);
     const [averageMovementTime, setAverageMovementTime] = useState(0);
     const [results, setResults] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         let interval;
@@ -65,28 +70,31 @@ function Canvas() {
             const y2 = (configuration[activatedButtons.first].y + configuration[activatedButtons.first].height) / 2;
 
             const distance = Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2))
-
             setResults([...results, {
                 averageMovementTime: averageMovementTime,
-                id: calculateId(configuration[activatedButtons.second].width, distance)
+                id: calculateId(configuration[activatedButtons.second].width, distance),
+                buttonConfigurations: configuration
             }])
         }
 
     }, [clicks, activatedButtons, averageMovementTime, configuration, results]);
 
-    useEffect(() => {
-        console.log(results);
-    }, [results])
-
+    // Submitting the results for the attempt
     useEffect(() => {
         if (prompt > numPrompts) {
-            console.log('Needs to record a prompt result');
+            updateGameStatus(results);
             setPrompt(0);
             setState('prepare');
+            setResults([]);
         }
-
         setActivatedButtons(activatedButtonsAt(prompt));
     }, [prompt]);
+
+    useEffect(()=>{
+        if(gameProgress===gameStatus.FINISHED){
+            navigate('/congratulations');
+        }
+    },[gameProgress]);
 
     const onClick = () => {
         const newClicks = clicks + 1;
@@ -118,6 +126,10 @@ function Canvas() {
         return true;
     }
 
+    const onClickMockStart = () => {
+        setState('start');
+    }
+
     return (
         <Paper sx={{
             position: 'relative',
@@ -130,9 +142,9 @@ function Canvas() {
                 top: 30,
                 left: 115
             }}>
-                Dashboard
+                Dashboard: Round {gameRounds}
             </Typography>
-            <Button onClick={() => { setState('start') }} >Mock start</Button>
+            <Button onClick={onClickMockStart} >Mock start</Button>
             {configuration.map(({ Button, width, height, x, y, boundary }, index) => {
                 return (
                     <SizeableDraggableBox
