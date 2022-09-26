@@ -18,7 +18,7 @@ const menuBoundary = {
 const courseBoundary = {
     className: 'courseBoundary',
     dimension: {
-        top: 90,
+        top: 270,
         left: 90,
         width: 710,
         height: 1,
