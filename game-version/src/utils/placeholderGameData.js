@@ -5,7 +5,7 @@ export const placeholderGameData = [
   },
   {
     attempt: 2,
-    promptTimes: [9, 4, 3.2, 5, 8],
+    promptTimes: [9, 4, 3, 2, 5, 8],
   },
   {
     attempt: 3,

@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Grid from "@mui/material/Grid";
 import Animation from "../components/Animation";
 import BarChart from "../components/BarChart";
 import { Box, Button, Card, CardContent, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { placeholderGameData } from "../utils/placeholderGameData";
+import { GameLogicContext } from "../contexts/GameLogicContextProvider";
 
 function Congratulations() {
   const options = {
@@ -12,6 +13,8 @@ function Congratulations() {
       duration: 5000,
     },
   };
+
+  const { plantStage } = useContext(GameLogicContext);
   const [gameData, setGameDate] = useState({
     labels: ["Attempt 1", "Attempt 2", "Attempt 3"],
     datasets: [
@@ -69,7 +72,7 @@ function Congratulations() {
           >
             <h1>Congratulations!</h1>
             <div style={{ height: "600px", width: "600px" }}>
-              <Animation stage={4}></Animation>
+              <Animation stage={plantStage}></Animation>
             </div>
           </Grid>
           <Grid
