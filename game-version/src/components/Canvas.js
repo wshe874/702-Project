@@ -12,7 +12,7 @@ import {useNavigate} from 'react-router-dom';
 
 function Canvas() {
     const numPrompts = 6;
-    const numClicks = 2;
+    const numClicks = 6;
 
     const { configuration, changePosition, changeSize } = useContext(GameContext);
     const {gameProgress,gameRounds, updateGameStatus} = useContext(GameLogicContext);

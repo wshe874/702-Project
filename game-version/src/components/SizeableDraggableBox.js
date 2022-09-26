@@ -1,6 +1,5 @@
 import React from 'react';
 import { Rnd } from 'react-rnd';
-import Boundary from './Boundary';
 
 function SizeableDraggableBox({ x, y, width, height, onPositionChange, onSizeChange, boundary, children, active }) {
     const onDragStop = (e, d) => {
@@ -22,13 +21,11 @@ function SizeableDraggableBox({ x, y, width, height, onPositionChange, onSizeCha
 
     return (
         <>
-            <Boundary {...boundary.dimension} className={boundary.className} />
             <Rnd
                 size={{ width: width, height: height }}
                 position={{ x: x, y: y }}
-                onDragStop={onDragStop}
-                onResizeStop={onResizeStop}
-                bounds={`.${boundary.className}`}
+                onDrag={onDragStop}
+                onResize={onResizeStop}
                 enableResizing={active}
                 disableDragging={!active}
             >

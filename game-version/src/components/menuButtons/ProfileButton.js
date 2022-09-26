@@ -8,20 +8,21 @@ function ProfileButton({ disabled, onClick }) {
             width: 1,
             height: 1,
             bgcolor: '#00457c',
-            boxShadow: !disabled && "0 0 10px 10px #B3DB59",
             '&:hover': {
-                backgroundColor: '#003666'
+                backgroundColor: '#003666',
+                boxShadow: !disabled && "0 0 10px 10px #B3DB59",
             },
             '&:active': {
-                backgroundColor: '#00213D'
+                backgroundColor: '#00213D',
             },
+            boxShadow: !disabled && "0 0 10px 10px #B3DB59",
 
         }}>
             <Box sx={{
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
-                alignItems: 'center'
+                alignItems: 'center',
             }}>
                 <Box
                     sx={{
