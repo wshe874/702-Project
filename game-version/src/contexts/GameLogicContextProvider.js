@@ -5,15 +5,16 @@ import { initialTotalID, gameStatus } from "../utils/gameUtils";
 const GameLogicContext = createContext(undefined);
 
 function GameLogicContextProvider({ children }) {
-  const [gameProgress, setGameProgress] = useState(gameStatus.NOT_OPEN); // false means game has not started
-  const [gameResults, setGameResults] = useState([]);
+  const [gameProgress, setGameProgress] = useState(gameStatus.NOT_OPEN);
+  const [gameResults, setGameResults] = useState([]); // use this state to get all the games results for each attempt
   const [gameRounds, setGameRounds] = useState(1);
   const [previousID, setPreviousID] = useState(initialTotalID());
-  const [plantStage, setPlantStage] = useState(0);
+  const [plantStage, setPlantStage] = useState(0); // use this state to get the plant state
   const [numFails, setNumFails] = useState(0);
+  const [lastRoundResult, setLastRoundResult] = useState({}); //use this state to compare with the result from last round
 
   const determineFinishByFails = () => {
-    if (numFails === 3) {
+    if (numFails === 2) {
       setGameProgress(gameStatus.FINISHED);
       setPlantStage(5);
     } else {
@@ -26,7 +27,7 @@ function GameLogicContextProvider({ children }) {
     setPreviousID(params.newID);
     setPlantStage(params.stage);
     setNumFails(0);
-    setGameResults([...gameResults, params.results]);
+    setLastRoundResult(params.results);
   };
 
   const updateGameStatus = (results) => {
@@ -36,33 +37,39 @@ function GameLogicContextProvider({ children }) {
       newID += results[index].id;
       index++;
     }
+    setGameResults([...gameResults, results]);
     if (previousID > newID) {
-      const differenceInID = previousID - newID;
-      switch (gameRounds) {
-        case 1:
-          if (differenceInID/previousID > 0.1) {
-            onSuccessfulAttempt({results:results,newID:newID,stage:1});
-          } else {
-            determineFinishByFails();
-          }
-          break;
-        case 2:
-          if (differenceInID/previousID > 0.15) {
-            onSuccessfulAttempt({results:results,newID:newID,stage:2});
-          } else {
-            determineFinishByFails();
-          }
-          break;
-        case 3:
-          if (differenceInID/previousID > 0.18) {
-            onSuccessfulAttempt({results:results,newID:newID,stage:3});
-            setGameProgress(gameStatus.FINISHED);
-          } else {
-            determineFinishByFails();
-          }
-          break;
-        default:
-          break;
+      if (newID < 3.5) {
+        setPlantStage(3);
+        setGameProgress(gameStatus.FINISHED);
+      } else {
+        const differenceInID = previousID - newID;
+        switch (gameRounds) {
+          case 1:
+            if (differenceInID / previousID > 0.1) {
+              onSuccessfulAttempt({ results: results, newID: newID, stage: 1 });
+            } else {
+              determineFinishByFails();
+            }
+            break;
+          case 2:
+            if (differenceInID / previousID > 0.15) {
+              onSuccessfulAttempt({ results: results, newID: newID, stage: 2 });
+            } else {
+              determineFinishByFails();
+            }
+            break;
+          case 3:
+            if (differenceInID / previousID > 0.18) {
+              onSuccessfulAttempt({ results: results, newID: newID, stage: 3 });
+              setGameProgress(gameStatus.FINISHED);
+            } else {
+              determineFinishByFails();
+            }
+            break;
+          default:
+            break;
+        }
       }
     } else {
       determineFinishByFails();
