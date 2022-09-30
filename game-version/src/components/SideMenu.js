@@ -17,6 +17,15 @@ const SideMenu = () => {
     color: 'black', backgroundColor: '#b3db59', marginTop: '30px', marginBottom: '40px'
   }
 
+  const dummyData = [
+    {
+      width: 3.4, 
+      height: 4.5,
+      distance: 5.6,
+      mt: 3.4
+    }
+  ];
+
 
   return (
     <Card sx={{ width: '100%', height: '100%', background: '#f4f4f4', boxShadow: 'none', borderRadius: '1rem' }}>
@@ -37,7 +46,9 @@ const SideMenu = () => {
               </Grid>
 
               <Grid item xs={4} md={4}>
-                <SideMenuTable/>
+                {/* <SideMenuHeader/>
+                <SideMenuTableRow prompt={"1"} width={"2.3"} height={"3.4"} distance={"3.4"} mt={"5.6"}/> */}
+                <SideMenuTable data={dummyData}/>
               </Grid>
           </Grid>
 
