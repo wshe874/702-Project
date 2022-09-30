@@ -1,44 +1,33 @@
-import { Grid } from '@mui/material';
+import { Grid, Paper } from '@mui/material';
 
 
 const SideMenuHeader = () => {
 
-
-  const columnStyle = {
-    fontSize: '13px',
-    textAlign: 'center'
+  const cell = {
+    padding: 0,
+    textAlign: "center",
+    fontSize: '13px'
   }
 
 
   return (
-    <Grid container
-        direction="column"
-        justifyContent="center"
-        alignItems="center">
-      <Grid container
-        direction="row"
-        justifyContent="space-evenly"
-        alignItems="center" 
-        spacing={0}
-        sx={{borderBottom: '1px solid black', paddingBottom: '5px'}}>
-          {/* This is the row with the column headers */}
-          <Grid item xs={2} md={2}>
-            <div style={columnStyle}>Prompt</div>
-          </Grid>
-          <Grid item xs={2} md={2}>
-            <div style={columnStyle}>Width</div>
-          </Grid>
-          <Grid item xs={2} md={2}>
-            <div style={columnStyle}>Height</div>
-          </Grid>
-          <Grid item xs={2} md={2}>
-            <div style={columnStyle}>Distance</div>
-          </Grid>
-          <Grid item xs={2} md={2}>
-            <div style={columnStyle}>Average movement time (ms)</div>
-          </Grid>
-      </Grid>
-    </Grid>
+    <>
+        <Grid item xs={2}>
+          <Paper style={cell}>Prompt</Paper>
+        </Grid>
+        <Grid item xs={2}>
+          <Paper style={cell}>Width</Paper>
+        </Grid>
+        <Grid item xs={2}>
+          <Paper style={cell}>Height</Paper>
+        </Grid>
+        <Grid item xs={2}>
+          <Paper style={cell}>Distance</Paper>
+        </Grid>
+        <Grid item xs={2}>
+          <Paper style={cell}>Average movement time (ms)</Paper>
+        </Grid>
+      </>
   );
 };
 

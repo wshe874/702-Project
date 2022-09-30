@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { Card, CardContent, Button, Grid, Item } from '@mui/material';
+import { Card, CardContent, Button, Grid } from '@mui/material';
 import Animation from '../components/Animation';
 import { GameLogicContext } from '../contexts/GameLogicContextProvider';
 import SideMenuTable from './sideMenuComponents/SideMenuTable'
@@ -17,15 +17,6 @@ const SideMenu = () => {
     color: 'black', backgroundColor: '#b3db59', marginTop: '30px', marginBottom: '40px'
   }
 
-  const dummyData = [
-    {
-      width: 3.4, 
-      height: 4.5,
-      distance: 5.6,
-      mt: 3.4
-    }
-  ];
-
 
   return (
     <Card sx={{ width: '100%', height: '100%', background: '#f4f4f4', boxShadow: 'none', borderRadius: '1rem' }}>
@@ -33,22 +24,26 @@ const SideMenu = () => {
         <Grid container
           direction="column"
           justifyContent="space-around"
-          alignItems="center"
+          alignItems="stretch"
           sx={{border: '1px solid green', height: '100%', width: '100%', position: 'relative'}}>
 
           <Grid item
-              direction="column"
-              justifyContent="space-around"
-              alignItems="stretch" 
-              xs={8} md={8} sx={{border: '5px solid blue'}}>
-              <Grid item xs={4} md={4}>
+              xs={8} md={8} 
+              sx={{border: '5px solid blue', textAlign: 'center'}}>
+
+              <Grid container item 
+              justifyContent="center"
+              alignItems="center"
+              xs={12} spacing={0}>
                 <Button sx={readyBtn} variant="outlined" size="large" disableRipple>Ready</Button>
               </Grid>
 
-              <Grid item xs={4} md={4}>
-                {/* <SideMenuHeader/>
-                <SideMenuTableRow prompt={"1"} width={"2.3"} height={"3.4"} distance={"3.4"} mt={"5.6"}/> */}
-                <SideMenuTable data={dummyData}/>
+              <Grid container 
+                direction="column"
+              justifyContent="space-around"
+              alignItems="stretch" 
+              sx={{border: '5px solid yellow', width: '100%'}}>
+                <SideMenuTable/>
               </Grid>
           </Grid>
 
