@@ -8,7 +8,28 @@ const SideMenuTableRow = (props) => {
   const cell = {
     padding: 0,
     textAlign: "center",
-    fontSize: '13px'
+    fontSize: '13px',
+  }
+
+  const topCell = {
+    marginBottom: '4px',
+  }
+
+  const bottomCell = {
+    marginTop: '4px'
+  }
+
+  function InnerGrid(props) {
+    return (
+      <>
+        <Grid item xs={4}>
+          <Paper style={{...cell, ...topCell}}>{props.value1}</Paper>
+        </Grid>
+        <Grid item xs={4}>
+          <Paper style={{...cell, ...bottomCell}}>{props.value2}</Paper>
+        </Grid>
+      </>
+    );
   }
   
   return (
@@ -17,10 +38,22 @@ const SideMenuTableRow = (props) => {
           <Paper style={cell}>{prompt}</Paper>
         </Grid>
         <Grid item xs={2}>
-          <Paper style={cell}>{buttonConfigurations[0].width}</Paper>
+          <Grid container item
+          direction="column" 
+          justifyContent="space-between"
+          alignItems="center"
+          xs={12} spacing={0}>
+            <InnerGrid value1={buttonConfigurations[0].width} value2={buttonConfigurations[1].width}/>
+          </Grid>
         </Grid>
         <Grid item xs={2}>
-          <Paper style={cell}>{buttonConfigurations[0].height}</Paper>
+          <Grid container item 
+          direction="column" 
+          justifyContent="space-between"
+          alignItems="center"
+          xs={12} spacing={0}>
+            <InnerGrid value1={buttonConfigurations[0].height} value2={buttonConfigurations[1].height}/>
+          </Grid>
         </Grid>
         <Grid item xs={2}>
           <Paper style={cell}>{distance}</Paper>
