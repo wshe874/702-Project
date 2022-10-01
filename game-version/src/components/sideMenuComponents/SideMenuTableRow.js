@@ -9,6 +9,7 @@ const SideMenuTableRow = (props) => {
     padding: 0,
     textAlign: "center",
     fontSize: '13px',
+    backgroundColor: 'transparent'
   }
 
   const topCell = {
@@ -23,10 +24,10 @@ const SideMenuTableRow = (props) => {
     return (
       <>
         <Grid item xs={4}>
-          <Paper style={{...cell, ...topCell}}>{props.value1}</Paper>
+          <Paper elevation={0} style={{...cell, ...topCell}}>{props.value1}</Paper>
         </Grid>
         <Grid item xs={4}>
-          <Paper style={{...cell, ...bottomCell}}>{props.value2}</Paper>
+          <Paper elevation={0} style={{...cell, ...bottomCell}}>{props.value2}</Paper>
         </Grid>
       </>
     );
@@ -35,7 +36,7 @@ const SideMenuTableRow = (props) => {
   return (
     <>
         <Grid item xs={2}>
-          <Paper style={cell}>{prompt}</Paper>
+          <Paper elevation={0} style={cell}>{prompt}</Paper>
         </Grid>
         <Grid item xs={2}>
           <Grid container item
@@ -56,10 +57,10 @@ const SideMenuTableRow = (props) => {
           </Grid>
         </Grid>
         <Grid item xs={2}>
-          <Paper style={cell}>{distance}</Paper>
+          <Paper elevation={0} style={cell}>{distance}</Paper>
         </Grid>
         <Grid item xs={2}>
-          <Paper style={cell}>{mt}</Paper>
+          <Paper elevation={0} style={cell}>{mt}</Paper>
         </Grid>
       </>
   );

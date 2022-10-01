@@ -10,7 +10,7 @@ const SideMenuTable = () => {
    const {gameResults, gameRounds} = useContext(GameLogicContext);
 
    const root = {
-    flexGrow: 1
+      flexGrow: 1
    };
 
   return (
@@ -29,7 +29,7 @@ const SideMenuTable = () => {
         {gameResults.length > 0 ? gameResults[gameRounds-1].map((promptData, index) => {
             const distanceToDisplay = Math.floor(promptData.distance);
             const mtToDisplay = Math.floor(promptData.averageMovementTime);
-            
+
             return <Grid container item 
             key={index}
             justifyContent="space-around"

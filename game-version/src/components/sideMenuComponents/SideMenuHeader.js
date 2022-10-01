@@ -6,26 +6,27 @@ const SideMenuHeader = () => {
   const cell = {
     padding: 0,
     textAlign: "center",
-    fontSize: '13px'
+    fontSize: '13px',
+    backgroundColor: 'transparent'
   }
 
 
   return (
     <>
         <Grid item xs={2}>
-          <Paper style={cell}>Prompt</Paper>
+          <Paper elevation={0} style={cell}>Prompt</Paper>
         </Grid>
         <Grid item xs={2}>
-          <Paper style={cell}>Width</Paper>
+          <Paper elevation={0} style={cell}>Width</Paper>
         </Grid>
         <Grid item xs={2}>
-          <Paper style={cell}>Height</Paper>
+          <Paper elevation={0} style={cell}>Height</Paper>
         </Grid>
         <Grid item xs={2}>
-          <Paper style={cell}>Distance</Paper>
+          <Paper elevation={0} style={cell}>Distance</Paper>
         </Grid>
         <Grid item xs={2}>
-          <Paper style={cell}>Average movement time (ms)</Paper>
+          <Paper elevation={0} style={cell}>Average movement time (ms)</Paper>
         </Grid>
       </>
   );
