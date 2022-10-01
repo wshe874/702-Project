@@ -73,7 +73,8 @@ function Canvas() {
             setResults([...results, {
                 averageMovementTime: averageMovementTime,
                 id: calculateId(configuration[activatedButtons.second].width, distance),
-                buttonConfigurations: configuration
+                buttonConfigurations: [configuration[activatedButtons.first],configuration[activatedButtons.second]],
+                distance: distance
             }])
         }
 
