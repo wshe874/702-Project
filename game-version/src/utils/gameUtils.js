@@ -143,6 +143,9 @@ const initialTotalID = ()=>{
         indexOfDifficulty += calculateId(initialConfiguration[activatedButtons.second].width, distance)
         index++;
     }
+
+    console.log("indexOfDifficulty: ", indexOfDifficulty);
+    
     return indexOfDifficulty;
 }
 

@@ -6,7 +6,7 @@ import SideMenuTable from './sideMenuComponents/SideMenuTable'
 
 
 const SideMenu = () => {
-  const {plantStage,setPlantStage, gameRounds} = useContext(GameLogicContext);
+  const {plantStage,setPlantStage, tableColor} = useContext(GameLogicContext);
   const [localPlantStage,setLocalPlantStage] = useState(plantStage);
 
   useEffect(()=>{
@@ -55,7 +55,7 @@ const SideMenu = () => {
               justifyContent="space-around"
               alignItems="stretch" 
               sx={{border: '5px solid yellow', width: '100%'}}>
-                <SideMenuTable/>
+                <SideMenuTable color={tableColor}/>
               </Grid>
           </Grid>
 

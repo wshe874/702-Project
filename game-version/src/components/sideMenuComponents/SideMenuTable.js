@@ -5,7 +5,7 @@ import SideMenuHeader from './SideMenuHeader'
 import SideMenuTableRow from './SideMenuTableRow'
 
 
-const SideMenuTable = () => {
+const SideMenuTable = (props) => {
 
    const {gameResults, gameRounds} = useContext(GameLogicContext);
 
@@ -36,7 +36,7 @@ const SideMenuTable = () => {
             alignItems="center"
             xs={12} spacing={0}
             style={{marginTop: '10px', marginBottom: '10px'}}>
-              <SideMenuTableRow prompt={index + 1} buttonConfigurations={promptData.buttonConfigurations} distance={distanceToDisplay} mt={mtToDisplay}/>
+              <SideMenuTableRow prompt={index + 1} buttonConfigurations={promptData.buttonConfigurations} distance={distanceToDisplay} mt={mtToDisplay} color={props.color}/>
             </Grid>
         }) : null}
       </Grid>

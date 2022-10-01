@@ -3,13 +3,14 @@ import { Grid, Paper } from '@mui/material';
 
 const SideMenuTableRow = (props) => {
 
-  const {prompt, buttonConfigurations, distance, mt} = props;
+  const {prompt, buttonConfigurations, distance, mt, color} = props;
 
   const cell = {
     padding: 0,
     textAlign: "center",
     fontSize: '13px',
-    backgroundColor: 'transparent'
+    backgroundColor: 'transparent',
+    color: color
   }
 
   const topCell = {
