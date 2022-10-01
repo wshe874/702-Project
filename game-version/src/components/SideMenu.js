@@ -4,10 +4,12 @@ import Animation from '../components/Animation';
 import { GameLogicContext } from '../contexts/GameLogicContextProvider';
 import SideMenuTable from './sideMenuComponents/SideMenuTable'
 import { gameStatus } from '../utils/gameUtils';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 
 const SideMenu = () => {
-  const {plantStage,setPlantStage, tableColor, gameProgress} = useContext(GameLogicContext);
+  const {plantStage,setPlantStage, tableColor, gameProgress, numFails} = useContext(GameLogicContext);
   const [localPlantStage,setLocalPlantStage] = useState(plantStage);
 
   useEffect(()=>{
@@ -62,17 +64,32 @@ const SideMenu = () => {
 
           <Grid container item xs={4} md={4} alignItems="flex-end" sx={{position: 'relative', width: '100%', textAlign: 'center', border: '3px solid yellow'}}>
               
-            <div style={classes.root}>
+          <div style={classes.root}>
+              <Grid container spacing={1}>
                 <Grid container item xs={12} md={12} spacing={0}
-                    direction="column"
-                    justifyContent="flex-end"
-                    alignItems="center">
-                      <Paper elevation={0} style={classes.paper}>
-                        <div style={{border: '1px solid blue', width: '90%', margin: '0 auto'}}>
-                          <Animation stage={localPlantStage}></Animation>
-                        </div>
-                      </Paper>
+                      direction="column"
+                      justifyContent="flex-end"
+                      alignItems="center">
+                        <Paper elevation={0} style={classes.paper}>
+                          <div style={{border: '1px solid blue', width: '70%', margin: '0 auto'}}>
+                            <Animation stage={localPlantStage}></Animation>
+                          </div>
+                        </Paper>
                 </Grid>
+                <Grid container item 
+                direction="column"
+                justifyContent="center"
+                alignItems="center"
+                xs={12} spacing={3}>
+                  <Grid item xs={4}>
+                    <Paper elevation={0} style={classes.paper}>
+                      {numFails <= 2 ? <FavoriteIcon style={{ color: 'red' }} /> : <FavoriteBorderIcon style={{ color: 'red' }} />}
+                      {numFails <= 1 ? <FavoriteIcon style={{ color: 'red' }} /> : <FavoriteBorderIcon style={{ color: 'red' }} />}
+                      {numFails === 0 ? <FavoriteIcon style={{ color: 'red' }} /> : <FavoriteBorderIcon style={{ color: 'red' }} />}
+                    </Paper>
+                  </Grid>
+                </Grid>
+              </Grid>
             </div>
               
           </Grid>
