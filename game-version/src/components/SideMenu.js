@@ -23,7 +23,6 @@ const SideMenu = () => {
   const classes = {
     root: {
       flexGrow: 1,
-      border: '1px solid red',
     },
     paper: {
       textAlign: "center",
@@ -40,11 +39,11 @@ const SideMenu = () => {
           direction="column"
           justifyContent="space-around"
           alignItems="stretch"
-          sx={{border: '1px solid green', height: '100%', width: '100%', position: 'relative'}}>
+          sx={{height: '100%', width: '100%', position: 'relative'}}>
 
           <Grid item
               xs={8} md={8} 
-              sx={{border: '5px solid blue', textAlign: 'center'}}>
+              sx={{textAlign: 'center'}}>
 
               {/* This is the Ready button */}
               <Grid container item 
@@ -59,13 +58,13 @@ const SideMenu = () => {
                 direction="column"
               justifyContent="space-around"
               alignItems="stretch" 
-              sx={{border: '5px solid yellow', width: '100%'}}>
+              sx={{width: '100%'}}>
                 <SideMenuTable color={tableColor}/>
               </Grid>
           </Grid>
 
           {/* This is the plant and the 3 heart lives meter */}
-          <Grid container item xs={4} md={4} alignItems="flex-end" sx={{position: 'relative', width: '100%', textAlign: 'center', border: '3px solid yellow'}}>
+          <Grid container item xs={4} md={4} alignItems="flex-end" sx={{position: 'relative', width: '100%', textAlign: 'center'}}>
             <div style={classes.root}>
                 <Grid container spacing={1}>
 
@@ -75,7 +74,7 @@ const SideMenu = () => {
                         justifyContent="flex-end"
                         alignItems="center">
                           <Paper elevation={0} style={classes.paper}>
-                            <div style={{border: '1px solid blue', width: '70%', margin: '0 auto'}}>
+                            <div style={{width: '70%', margin: '0 auto'}}>
                               <Animation stage={localPlantStage}></Animation>
                             </div>
                           </Paper>
