@@ -3,7 +3,7 @@ import { Grid, Paper } from '@mui/material';
 
 const SideMenuTableRow = (props) => {
 
-  const {prompt, width, height, distance, mt} = props;
+  const {prompt, buttonConfigurations, distance, mt} = props;
 
   const cell = {
     padding: 0,
@@ -17,10 +17,10 @@ const SideMenuTableRow = (props) => {
           <Paper style={cell}>{prompt}</Paper>
         </Grid>
         <Grid item xs={2}>
-          <Paper style={cell}>{width}</Paper>
+          <Paper style={cell}>{buttonConfigurations[0].width}</Paper>
         </Grid>
         <Grid item xs={2}>
-          <Paper style={cell}>{height}</Paper>
+          <Paper style={cell}>{buttonConfigurations[0].height}</Paper>
         </Grid>
         <Grid item xs={2}>
           <Paper style={cell}>{distance}</Paper>

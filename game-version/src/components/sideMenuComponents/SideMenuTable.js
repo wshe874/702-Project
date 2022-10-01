@@ -7,7 +7,7 @@ import SideMenuTableRow from './SideMenuTableRow'
 
 const SideMenuTable = () => {
 
-   const {gameResults} = useContext(GameLogicContext);
+   const {gameResults, gameRounds} = useContext(GameLogicContext);
 
    const root = {
     flexGrow: 1
@@ -16,6 +16,7 @@ const SideMenuTable = () => {
   return (
 
     <div style={root}>
+      {console.log("gameResults: ",  gameResults)}
       <Grid container spacing={0}>
         <Grid container item 
         justifyContent="space-around"
@@ -25,15 +26,19 @@ const SideMenuTable = () => {
           <SideMenuHeader/>
         </Grid>
 
-        {gameResults.map((promptData, index) => {
+        {gameResults.length > 0 ? gameResults[gameRounds-1].map((promptData, index) => {
+            const distanceToDisplay = Math.floor(promptData.distance);
+            const mtToDisplay = Math.floor(promptData.averageMovementTime);
+            
             return <Grid container item 
+            key={index}
             justifyContent="space-around"
             alignItems="center"
             xs={12} spacing={0}
             style={{marginTop: '10px', marginBottom: '10px'}}>
-              <SideMenuTableRow key={index} prompt={index + 1} width={promptData.width} height={promptData.height} distance={promptData.distance} mt={promptData.mt}/>
+              <SideMenuTableRow prompt={index + 1} buttonConfigurations={promptData.buttonConfigurations} distance={distanceToDisplay} mt={mtToDisplay}/>
             </Grid>
-        })}
+        }) : null}
       </Grid>
     </div>
   );

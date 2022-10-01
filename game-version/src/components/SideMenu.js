@@ -6,7 +6,7 @@ import SideMenuTable from './sideMenuComponents/SideMenuTable'
 
 
 const SideMenu = () => {
-  const {plantStage,setPlantStage} = useContext(GameLogicContext);
+  const {plantStage,setPlantStage, gameRounds} = useContext(GameLogicContext);
   const [localPlantStage,setLocalPlantStage] = useState(plantStage);
 
   useEffect(()=>{
@@ -38,6 +38,8 @@ const SideMenu = () => {
                 <Button sx={readyBtn} variant="outlined" size="large" disableRipple>Ready</Button>
               </Grid>
 
+              <p>{gameRounds}</p>
+
               <Grid container 
                 direction="column"
               justifyContent="space-around"
@@ -47,8 +49,8 @@ const SideMenu = () => {
               </Grid>
           </Grid>
 
-          <Grid item xs={4} md={4} alignItems="stretch" sx={{position: 'relative', width: '100%', textAlign: 'center', border: '3px solid yellow'}}>
-              <div style={{border: '1px solid red', position: 'absolute', bottom: '0', display: 'block', margin: 'auto 0', width: '100%'}}>
+          <Grid container item xs={4} md={4} alignItems="center" sx={{position: 'relative', width: '100%', textAlign: 'center', border: '3px solid yellow'}}>
+              <div style={{border: '1px solid red', position: 'absolute', bottom: '0', display: 'block', margin: 'auto 0', width: '50%'}}>
                 <Animation stage={localPlantStage}></Animation>
               </div>
           </Grid>
