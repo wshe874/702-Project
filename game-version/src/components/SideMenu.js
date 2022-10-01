@@ -3,10 +3,11 @@ import { Card, CardContent, Button, Grid, Paper } from '@mui/material';
 import Animation from '../components/Animation';
 import { GameLogicContext } from '../contexts/GameLogicContextProvider';
 import SideMenuTable from './sideMenuComponents/SideMenuTable'
+import { gameStatus } from '../utils/gameUtils';
 
 
 const SideMenu = () => {
-  const {plantStage,setPlantStage, tableColor} = useContext(GameLogicContext);
+  const {plantStage,setPlantStage, tableColor, gameProgress} = useContext(GameLogicContext);
   const [localPlantStage,setLocalPlantStage] = useState(plantStage);
 
   useEffect(()=>{
@@ -47,7 +48,7 @@ const SideMenu = () => {
               justifyContent="center"
               alignItems="center"
               xs={12} md={12} spacing={0}>
-                <Button sx={readyBtn} variant="outlined" size="large" disableRipple>Ready</Button>
+                <Button sx={readyBtn} variant="outlined" size="large" disabled={gameProgress === gameStatus.IN_PROGRESS} disableRipple>Ready</Button>
               </Grid>
 
               <Grid container 
