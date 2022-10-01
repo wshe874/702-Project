@@ -16,8 +16,9 @@ const SideMenuTable = (props) => {
   return (
 
     <div style={root}>
-      {console.log("gameResults: ",  gameResults)}
       <Grid container spacing={0}>
+
+        {/* This is the table header */}
         <Grid container item 
         justifyContent="space-around"
         alignItems="center"
@@ -26,6 +27,9 @@ const SideMenuTable = (props) => {
           <SideMenuHeader/>
         </Grid>
 
+
+        {/* This is rendering each row of the table. There should be 0 rows at the very start. And then after the 1st attempt and
+        onwards, there should be 6 rows for 6 prompts. */}
         {gameResults.length > 0 ? gameResults[gameRounds-1].map((promptData, index) => {
             const distanceToDisplay = Math.floor(promptData.distance);
             const mtToDisplay = Math.floor(promptData.averageMovementTime);

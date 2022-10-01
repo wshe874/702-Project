@@ -18,11 +18,9 @@ function GameLogicContextProvider({ children }) {
 
   const determineFinishByFails = () => {
     if (numFails === 2) {
-      console.log("YOU HAVE FAILED")
       setGameProgress(gameStatus.FINISHED);
       setPlantStage(5);
     } else {
-      console.log("U still got chance")
       setNumFails(numFails + 1);
     }
   };
@@ -50,10 +48,8 @@ function GameLogicContextProvider({ children }) {
       // Yes, when numOfAttemps = 0, because have not updated at this stage yet.
       setTableColor("black");
     } else if (previousID > newID) {
-      console.log("You are improving!!!")
       setTableColor("green");
     } else if (previousID < newID) {
-      console.log("You are getting worse!!!!")
       setTableColor("red");
     }
 

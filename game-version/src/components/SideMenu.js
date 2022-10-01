@@ -46,6 +46,7 @@ const SideMenu = () => {
               xs={8} md={8} 
               sx={{border: '5px solid blue', textAlign: 'center'}}>
 
+              {/* This is the Ready button */}
               <Grid container item 
               justifyContent="center"
               alignItems="center"
@@ -53,6 +54,7 @@ const SideMenu = () => {
                 <Button sx={readyBtn} variant="outlined" size="large" disabled={gameProgress === gameStatus.IN_PROGRESS} disableRipple>Ready</Button>
               </Grid>
 
+              {/* This is the data table */}
               <Grid container 
                 direction="column"
               justifyContent="space-around"
@@ -62,36 +64,39 @@ const SideMenu = () => {
               </Grid>
           </Grid>
 
+          {/* This is the plant and the 3 heart lives meter */}
           <Grid container item xs={4} md={4} alignItems="flex-end" sx={{position: 'relative', width: '100%', textAlign: 'center', border: '3px solid yellow'}}>
-              
-          <div style={classes.root}>
-              <Grid container spacing={1}>
-                <Grid container item xs={12} md={12} spacing={0}
-                      direction="column"
-                      justifyContent="flex-end"
-                      alignItems="center">
-                        <Paper elevation={0} style={classes.paper}>
-                          <div style={{border: '1px solid blue', width: '70%', margin: '0 auto'}}>
-                            <Animation stage={localPlantStage}></Animation>
-                          </div>
-                        </Paper>
-                </Grid>
-                <Grid container item 
-                direction="column"
-                justifyContent="center"
-                alignItems="center"
-                xs={12} spacing={3}>
-                  <Grid item xs={4}>
-                    <Paper elevation={0} style={classes.paper}>
-                      {numFails <= 2 ? <FavoriteIcon style={{ color: 'red' }} /> : <FavoriteBorderIcon style={{ color: 'red' }} />}
-                      {numFails <= 1 ? <FavoriteIcon style={{ color: 'red' }} /> : <FavoriteBorderIcon style={{ color: 'red' }} />}
-                      {numFails === 0 ? <FavoriteIcon style={{ color: 'red' }} /> : <FavoriteBorderIcon style={{ color: 'red' }} />}
-                    </Paper>
+            <div style={classes.root}>
+                <Grid container spacing={1}>
+
+                  {/* Plant */}
+                  <Grid container item xs={12} md={12} spacing={0}
+                        direction="column"
+                        justifyContent="flex-end"
+                        alignItems="center">
+                          <Paper elevation={0} style={classes.paper}>
+                            <div style={{border: '1px solid blue', width: '70%', margin: '0 auto'}}>
+                              <Animation stage={localPlantStage}></Animation>
+                            </div>
+                          </Paper>
+                  </Grid>
+
+                  {/* 3 heart lives meter */}
+                  <Grid container item 
+                  direction="column"
+                  justifyContent="center"
+                  alignItems="center"
+                  xs={12} spacing={3}>
+                    <Grid item xs={4}>
+                      <Paper elevation={0} style={classes.paper}>
+                        {numFails <= 2 ? <FavoriteIcon style={{ color: 'red' }} /> : <FavoriteBorderIcon style={{ color: 'red' }} />}
+                        {numFails <= 1 ? <FavoriteIcon style={{ color: 'red' }} /> : <FavoriteBorderIcon style={{ color: 'red' }} />}
+                        {numFails === 0 ? <FavoriteIcon style={{ color: 'red' }} /> : <FavoriteBorderIcon style={{ color: 'red' }} />}
+                      </Paper>
+                    </Grid>
                   </Grid>
                 </Grid>
-              </Grid>
-            </div>
-              
+              </div>
           </Grid>
 
         </Grid>
