@@ -28,6 +28,7 @@ function SizeableDraggableBox({ x, y, width, height, onPositionChange, onSizeCha
                 onResize={onResizeStop}
                 enableResizing={active}
                 disableDragging={!active}
+                bounds="parent"
             >
                 {children}
             </Rnd>
