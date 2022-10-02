@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createContext } from "react";
 import { initialTotalID, gameStatus } from "../utils/gameUtils";
 
@@ -12,6 +12,9 @@ function GameLogicContextProvider({ children }) {
   const [plantStage, setPlantStage] = useState(0); // use this state to get the plant state
   const [numFails, setNumFails] = useState(0);
   const [lastRoundResult, setLastRoundResult] = useState({}); //use this state to compare with the result from last round
+  const [numOfAttempts, setNumOfAttempts] = useState(0); // Use this to determine whether we have just finished the very first attempt or not
+  const [tableColor,setTableColor] = useState("black"); // This is the colour of the side-bar's text
+
 
   const determineFinishByFails = () => {
     if (numFails === 2) {
@@ -37,6 +40,20 @@ function GameLogicContextProvider({ children }) {
       newID += results[index].id;
       index++;
     }
+
+    setNumOfAttempts(oldValue => {return oldValue + 1});
+
+    // Setting the colour of the side-bar's table's text
+    if (numOfAttempts === 0) {
+      // Yes, when numOfAttemps = 0, because have not updated at this stage yet.
+      setTableColor("black");
+    } else if (previousID > newID) {
+      setTableColor("green");
+    } else if (previousID < newID) {
+      setTableColor("red");
+    }
+
+
     setGameResults([...gameResults, results]);
     if (previousID > newID) {
       if (newID < 3.5) {
@@ -85,6 +102,7 @@ function GameLogicContextProvider({ children }) {
     plantStage,
     setPlantStage,
     numFails,
+    tableColor
   };
 
   return (
