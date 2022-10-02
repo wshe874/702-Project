@@ -1,5 +1,4 @@
 import Home from "./Pages/Home";
-import Game from "./Pages/Game";
 import Congratulations from "./Pages/Congratulations";
 import NotFound from "./Pages/NotFound";
 import "./App.css";
