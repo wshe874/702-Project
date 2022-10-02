@@ -55,9 +55,6 @@ function Home2() {
         <div style={{ height: "200px", width: "200px" }}>
           <Animation stage={4}></Animation>
         </div>
-        <div style={{ height: "200px", width: "200px" }}>
-          <Animation stage={5}></Animation>
-        </div>
       </div>
     </div>
 
