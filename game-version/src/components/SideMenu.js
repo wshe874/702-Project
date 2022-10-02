@@ -9,7 +9,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 
 const SideMenu = () => {
-  const {plantStage,setPlantStage, tableColor, gameProgress, numFails} = useContext(GameLogicContext);
+  const {plantStage,setPlantStage, tableColor, gameProgress, numFails, setGameProgress} = useContext(GameLogicContext);
   const [localPlantStage,setLocalPlantStage] = useState(plantStage);
 
   useEffect(()=>{
@@ -42,7 +42,7 @@ const SideMenu = () => {
           sx={{height: '100%', width: '100%', position: 'relative'}}>
 
           <Grid item
-              xs={8} md={8} 
+              xs={8} md={7} 
               sx={{textAlign: 'center'}}>
 
               {/* This is the Ready button */}
@@ -50,7 +50,7 @@ const SideMenu = () => {
               justifyContent="center"
               alignItems="center"
               xs={12} md={12} spacing={0}>
-                <Button sx={readyBtn} variant="outlined" size="large" disabled={gameProgress === gameStatus.IN_PROGRESS} disableRipple>Ready</Button>
+                <Button sx={readyBtn} variant="outlined" size="large" disabled={gameProgress !== gameStatus.DESIGN_IN_PROGRESS} onClick={() => setGameProgress(gameStatus.IN_PROGRESS)} disableRipple>Ready</Button>
               </Grid>
 
               {/* This is the data table */}
@@ -74,7 +74,7 @@ const SideMenu = () => {
                         justifyContent="flex-end"
                         alignItems="center">
                           <Paper elevation={0} style={classes.paper}>
-                            <div style={{width: '70%', margin: '0 auto'}}>
+                            <div style={{width: '60%', margin: '0 auto'}}>
                               <Animation stage={localPlantStage}></Animation>
                             </div>
                           </Paper>

@@ -75,7 +75,7 @@ function Congratulations() {
             item
             xs={6}
           >
-            <h1>Congratulations!</h1>
+            {plantStage === 4 ? <h1>Better Luck Next Time!</h1>:<h1>Congratulations!</h1>}
             <div style={{ height: "600px", width: "600px" }}>
               <Animation stage={plantStage}></Animation>
             </div>
