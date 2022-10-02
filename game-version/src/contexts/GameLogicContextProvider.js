@@ -19,13 +19,15 @@ function GameLogicContextProvider({ children }) {
   const determineFinishByFails = () => {
     if (numFails === 2) {
       setGameProgress(gameStatus.FINISHED);
-      setPlantStage(5);
+      setPlantStage(4);
     } else {
+      setGameProgress(gameStatus.DESIGN_IN_PROGRESS);
       setNumFails(numFails + 1);
     }
   };
 
   const onSuccessfulAttempt = (params) => {
+    setGameProgress(gameStatus.DESIGN_IN_PROGRESS);
     setGameRounds(gameRounds + 1);
     setPreviousID(params.newID);
     setPlantStage(params.stage);
@@ -61,6 +63,7 @@ function GameLogicContextProvider({ children }) {
         setGameProgress(gameStatus.FINISHED);
       } else {
         const differenceInID = previousID - newID;
+
         switch (gameRounds) {
           case 1:
             if (differenceInID / previousID > 0.1) {

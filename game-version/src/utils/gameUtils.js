@@ -149,6 +149,7 @@ const initialTotalID = ()=>{
 
 const gameStatus = {
     NOT_OPEN:'Not Open',
+    DESIGN_IN_PROGRESS: 'Design In Progress',
     IN_PROGRESS:'In Progress',
     FINISHED:'Finished'
 }

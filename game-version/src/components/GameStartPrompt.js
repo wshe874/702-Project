@@ -110,7 +110,7 @@ const GameStartPrompt = () => {
             <p>
               Click <b>‘Start’</b> to begin designing the interface.
             </p>
-            <Button variant='contained' disableElevation onClick={() => setGameProgress(gameStatus.IN_PROGRESS)}>
+            <Button variant='contained' disableElevation onClick={() => setGameProgress(gameStatus.DESIGN_IN_PROGRESS)}>
               Start
             </Button>
           </Box>

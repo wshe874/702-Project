@@ -9,10 +9,6 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <nav>
-          <Link to="/">Home</Link> |<Link to="/game"> Game</Link> |
-          <Link to="/congratulations"> Congratulations</Link>
-        </nav>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/game" element={<LevelPage />} />
