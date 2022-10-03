@@ -19,7 +19,7 @@ function Canvas() {
     const [prompt, setPrompt] = useState(0);
     const [activatedButtons, setActivatedButtons] = useState(activatedButtonsAt(prompt));
     const [clicks, setClicks] = useState(0);
-    const [state, setState] = useState('prepare'); //prepare, start, done
+    // const [state, setState] = useState(game); //prepare, start, done
     const [time, setTime] = useState(0);
     const [start, setStart] = useState(false);
     const [averageMovementTime, setAverageMovementTime] = useState(0);
@@ -40,12 +40,12 @@ function Canvas() {
     }, [start, time]);
 
     useEffect(() => {
-        if (state === 'start') {
+        if (gameProgress === gameStatus.IN_PROGRESS) {
             setPrompt(1);
-        } else if (state === 'done') {
+        } else if (gameProgress === gameStatus.FINISHED) {
             setPrompt(0);
         }
-    }, [state]);
+    }, [gameProgress]);
 
     useEffect(() => {
         if (clicks % 2 === 0) {
@@ -85,7 +85,7 @@ function Canvas() {
         if (prompt > numPrompts) {
             updateGameStatus(results);
             setPrompt(0);
-            setState('prepare');
+            // setState('prepare');
             setResults([]);
         }
         setActivatedButtons(activatedButtonsAt(prompt));
@@ -112,7 +112,7 @@ function Canvas() {
     // Not sure if this is the right way to be called from the component itself
     // Overhead??
     const isDisabled = (index) => {
-        if (state === 'prepare') {
+        if (gameProgress === gameStatus.DESIGN_IN_PROGRESS) {
             return true;
         }
 
@@ -125,10 +125,6 @@ function Canvas() {
         }
 
         return true;
-    }
-
-    const onClickMockStart = () => {
-        setState('start');
     }
 
     return (
@@ -145,7 +141,6 @@ function Canvas() {
             }}>
                 Dashboard: Round {gameRounds}
             </Typography>
-            <Button onClick={onClickMockStart} >Mock start</Button>
             {configuration.map(({ Button, width, height, x, y, boundary }, index) => {
                 return (
                     <SizeableDraggableBox
@@ -161,7 +156,7 @@ function Canvas() {
                         onSizeChange={(width, height) => {
                             changeSize(index, width, height);
                         }}
-                        active={state === 'prepare'}
+                        active={gameProgress === gameStatus.DESIGN_IN_PROGRESS}
                     >
                         <Button disabled={isDisabled(index)} onClick={onClick} />
                     </SizeableDraggableBox>
