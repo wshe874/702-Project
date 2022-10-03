@@ -5,6 +5,7 @@ import BarChart from "../components/BarChart";
 import { Box, Button, Card, CardContent, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { GameLogicContext } from "../contexts/GameLogicContextProvider";
+import {useNavigate} from 'react-router-dom';
 
 function Congratulations() {
   const options = {
@@ -14,7 +15,9 @@ function Congratulations() {
   };
 
   let AttemptNumber = 0;
-  const { plantStage, gameResults, resetAllStates } = useContext(GameLogicContext);
+  const { gameResults, resetAllStates } = useContext(GameLogicContext);
+  const navigate = useNavigate();
+
   const finalLabels = gameResults.map((result) => {
     AttemptNumber++;
     return "Attempt " + AttemptNumber;
@@ -80,10 +83,8 @@ function Congratulations() {
             item
             xs={6}
           >
-            {plantStage === 4 ? <h1>Better Luck Next Time!</h1>:<h1>Congratulations!</h1>}
-            <div style={{ height: "600px", width: "600px" }}>
-              <Animation stage={plantStage}></Animation>
-            </div>
+            <h1>You are done!</h1>
+    
           </Grid>
           <Grid
             container
@@ -114,8 +115,9 @@ function Congratulations() {
               sx={{ color: "black", backgroundColor: "#b3db59" }}
               variant="outlined"
               size="large"
-              disableRipple
               onClick={onclickPlayAgain}
+
+              disableRipple
             >
               Play again
             </Button>
