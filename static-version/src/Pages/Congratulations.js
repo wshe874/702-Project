@@ -61,8 +61,6 @@ function Congratulations() {
 
   const  onclickPlayAgain = () => {
     resetAllStates();
-    // navigate("/game");
-    console.log("play again button clicked");
   }
 
   return (

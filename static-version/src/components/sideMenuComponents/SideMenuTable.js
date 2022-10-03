@@ -16,7 +16,6 @@ const SideMenuTable = (props) => {
   return (
 
     <div style={root}>
-      {console.log("gameResults: ", gameResults)}
       <Grid container spacing={0}>
 
         {/* This is the table header */}

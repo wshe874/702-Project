@@ -14,7 +14,7 @@ function Congratulations() {
   };
 
   let AttemptNumber = 0;
-  const { plantStage, gameResults } = useContext(GameLogicContext);
+  const { plantStage, gameResults, resetAllStates } = useContext(GameLogicContext);
   const finalLabels = gameResults.map((result) => {
     AttemptNumber++;
     return "Attempt " + AttemptNumber;
@@ -55,6 +55,11 @@ function Congratulations() {
       },
     ],
   };
+
+  const  onclickPlayAgain = () => {
+    resetAllStates();
+  }
+
   return (
     <>
       <Box
@@ -110,6 +115,7 @@ function Congratulations() {
               variant="outlined"
               size="large"
               disableRipple
+              onClick={onclickPlayAgain}
             >
               Play again
             </Button>

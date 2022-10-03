@@ -15,6 +15,18 @@ function GameLogicContextProvider({ children }) {
   const [numOfAttempts, setNumOfAttempts] = useState(0); // Use this to determine whether we have just finished the very first attempt or not
   const [tableColor,setTableColor] = useState("black"); // This is the colour of the side-bar's text
 
+  const resetAllStates = () => {
+    setGameProgress(gameStatus.NOT_OPEN);
+    setGameResults([]);
+    setGameRounds(1);
+    setPreviousID(initialTotalID());
+    setPlantStage(0);
+    setNumFails(0);
+    setLastRoundResult({});
+    setNumOfAttempts(0);
+    setTableColor("black");
+  }
+
 
   const determineFinishByFails = () => {
     if (numFails === 2) {
@@ -105,7 +117,8 @@ function GameLogicContextProvider({ children }) {
     plantStage,
     setPlantStage,
     numFails,
-    tableColor
+    tableColor,
+    resetAllStates
   };
 
   return (
