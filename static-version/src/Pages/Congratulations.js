@@ -5,7 +5,7 @@ import BarChart from "../components/BarChart";
 import { Box, Button, Card, CardContent, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { GameLogicContext } from "../contexts/GameLogicContextProvider";
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 function Congratulations() {
   const options = {
@@ -23,45 +23,32 @@ function Congratulations() {
     return "Attempt " + AttemptNumber;
   });
 
+  const indexOfPerformances = gameResults.map((result) => {
+    let totalID = 0;
+    let totalMT = 0;
+    result.forEach((data) => {
+      totalID += data.id;
+    });
+    result.forEach((data) => {
+      totalMT += data.averageMovementTime;
+    });
+    return totalID / totalMT;
+  });
+
   const gameData = {
     labels: finalLabels,
     datasets: [
       {
-        label: "Prompt 1",
-        data: gameResults.map((data) => data[0].averageMovementTime),
+        label: "Performance Index",
+        data: indexOfPerformances,
         backgroundColor: ["#AF81C9"],
-      },
-      {
-        label: "Prompt 2",
-        data: gameResults.map((data) => data[1].averageMovementTime),
-        backgroundColor: ["#F89A7E"],
-      },
-      {
-        label: "Prompt 3",
-        data: gameResults.map((data) => data[2].averageMovementTime),
-        backgroundColor: ["#F2CA85"],
-      },
-      {
-        label: "Prompt 4",
-        data: gameResults.map((data) => data[3].averageMovementTime),
-        backgroundColor: ["#54D1F1"],
-      },
-      {
-        label: "Prompt 5",
-        data: gameResults.map((data) => data[4].averageMovementTime),
-        backgroundColor: ["#7C71AD"],
-      },
-      {
-        label: "Prompt 6",
-        data: gameResults.map((data) => data[5].averageMovementTime),
-        backgroundColor: ["#445569"],
       },
     ],
   };
 
-  const  onclickPlayAgain = () => {
+  const onclickPlayAgain = () => {
     resetAllStates();
-  }
+  };
 
   return (
     <>
@@ -84,7 +71,6 @@ function Congratulations() {
             xs={6}
           >
             <h1>You are done!</h1>
-    
           </Grid>
           <Grid
             container
@@ -101,7 +87,7 @@ function Congratulations() {
                 </Typography>
                 <br></br>
                 <Typography variant="body2" color="text.secondary">
-                  Average time in milliseconds (ms) for each attempt
+                  Index of Performance for Each Attempt
                 </Typography>
                 <br></br>
                 <div style={{ height: "380px", width: "700px" }}>
@@ -116,7 +102,6 @@ function Congratulations() {
               variant="outlined"
               size="large"
               onClick={onclickPlayAgain}
-
               disableRipple
             >
               Play again
