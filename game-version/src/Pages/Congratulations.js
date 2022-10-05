@@ -5,6 +5,7 @@ import BarChart from "../components/BarChart";
 import { Box, Button, Card, CardContent, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { GameLogicContext } from "../contexts/GameLogicContextProvider";
+import {CSVLink} from "react-csv";
 
 function Congratulations() {
   const options = {
@@ -20,6 +21,52 @@ function Congratulations() {
     return "Attempt " + AttemptNumber;
   });
 
+  const data = [];
+
+  const headers = [
+    { label: "Round", key: "round" },
+    { label: "Prompt number", key: "promptNumber" },
+    { label: "Average Movement Time", key: "avgMovementTime" },
+    { label: "Distance", key: "distance" },
+    { label: "ID", key: "id" },
+    { label: "Button Height1", key: "btnHeight1" },
+    { label: "Button Width1", key: "btnWidth1" },
+    { label: "Button X1", key: "btnX1" },
+    { label: "Button Y1", key: "btnY1" },
+    { label: "Button Height2", key: "btnHeight2" },
+    { label: "Button Width2", key: "btnWidth2" },
+    { label: "Button X2", key: "btnX2" },
+    { label: "Button Y2", key: "btnY2" }
+  ];
+
+  function convertToCSV(results){
+    
+    for (let i = 0; i < results.length; i++) {
+      for (let j = 0; j < 6; j++) {
+        let object = {
+          round:results[i][j].round, 
+          promptNumber:j+1, 
+          avgMovementTime:results[i][j].averageMovementTime, 
+          distance:results[i][j].distance,
+          id:results[i][j].id,
+          btnHeight1:results[i][j].buttonConfigurations[0].height,
+          btnWidth1:results[i][j].buttonConfigurations[0].width,
+          btnX1:results[i][j].buttonConfigurations[0].x,
+          btnY1:results[i][j].buttonConfigurations[0].y,
+          btnHeight2:results[i][j].buttonConfigurations[1].height,
+          btnWidth2:results[i][j].buttonConfigurations[1].width,
+          btnX2:results[i][j].buttonConfigurations[1].x,
+          btnY2:results[i][j].buttonConfigurations[1].y,
+        };
+        console.log(object);
+        data.push(object);
+      }
+    }
+    return console.log(data);
+  }
+
+  convertToCSV(gameResults);
+  
   const gameData = {
     labels: finalLabels,
     datasets: [
@@ -113,6 +160,7 @@ function Congratulations() {
             >
               Play again
             </Button>
+            <CSVLink data={data} header={headers}>Save</CSVLink>
           </Grid>
         </Grid>
       </Box>
