@@ -5,14 +5,16 @@ import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import logo from '../images/uoa_white_logo.png';
 import { Button, Typography } from '@mui/material';
-import { activatedButtonsAt, calculateId, gameStatus } from '../utils/gameUtils';
+import { activatedButtonsAt, calculateId, gameStatus, pickPrompt } from '../utils/gameUtils';
 import { GameLogicContext } from '../contexts/GameLogicContextProvider';
 import {useNavigate} from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function Canvas() {
     const numPrompts = 6;
-    const numClicks = 2;
+    const numClicks = 6;
 
     const { configuration, changePosition, changeSize } = useContext(GameContext);
     const {gameProgress,gameRounds, updateGameStatus} = useContext(GameLogicContext);
@@ -25,6 +27,11 @@ function Canvas() {
     const [averageMovementTime, setAverageMovementTime] = useState(0);
     const [results, setResults] = useState([]);
     const navigate = useNavigate();
+    const toastId = React.useRef(null);
+
+    const notify = (prompt) => toastId.current = toast(pickPrompt(prompt), {position: "top-left"});
+
+    const dismiss = () =>  toast.dismiss(toastId.current);
 
     useEffect(() => {
         let interval;
@@ -57,6 +64,7 @@ function Canvas() {
         }
 
         if (clicks >= numClicks) {
+            dismiss()
             setClicks(0);
             setPrompt(p => p + 1);
 
@@ -83,11 +91,15 @@ function Canvas() {
 
     // Submitting the results for the attempt
     useEffect(() => {
+
         if (prompt > numPrompts) {
             updateGameStatus(results);
             setPrompt(0);
             // setState('prepare');
             setResults([]);
+        }
+        if(prompt > 0 && prompt <7){
+            notify(prompt);
         }
         setActivatedButtons(activatedButtonsAt(prompt));
     }, [prompt]);
@@ -135,6 +147,7 @@ function Canvas() {
             height: 1,
         }}>
             <SideBar />
+            <ToastContainer autoClose={false} closeOnClick={false} />
             <Typography variant='h5' component='div' sx={{
                 position: 'absolute',
                 top: 30,

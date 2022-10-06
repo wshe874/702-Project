@@ -6,6 +6,7 @@ import { Box, Button, Card, CardContent, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { GameLogicContext } from "../contexts/GameLogicContextProvider";
 import { useNavigate } from "react-router-dom";
+import {CSVLink} from "react-csv";
 
 function Congratulations() {
   const options = {
@@ -60,11 +61,9 @@ function Congratulations() {
           btnX2:results[i][j].buttonConfigurations[1].x,
           btnY2:results[i][j].buttonConfigurations[1].y,
         };
-        console.log(object);
         data.push(object);
       }
     }
-    return console.log(data);
   }
 
   convertToCSV(gameResults);
