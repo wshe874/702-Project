@@ -7,6 +7,7 @@ import { MdHome } from 'react-icons/md';
 import { GameLogicContext } from '../contexts/GameLogicContextProvider';
 import { gameStatus } from '../utils/gameUtils';
 import { useContext } from 'react';
+import { Link } from "react-router-dom";
 
 const Header = ({ level }) => {
   const {gameProgress} = useContext(GameLogicContext);
@@ -17,7 +18,7 @@ const Header = ({ level }) => {
           <Typography variant='h6' component='div' sx={{ flexGrow: 1, fontWeight: 'bold' }}>
             {level}
           </Typography>
-          <IconButton size='large' edge='start' color='inherit' aria-label='menu' disabled={gameProgress === gameStatus.IN_PROGRESS} sx={{ mr: 2 }}>
+          <IconButton component={Link} to="/" size='large' edge='start' color='inherit' aria-label='menu' disabled={gameProgress === gameStatus.IN_PROGRESS} sx={{ mr: 2 }}>
             <MdHome />
           </IconButton>
         </Toolbar>

@@ -71,6 +71,7 @@ function Canvas() {
 
             const distance = Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2))
             setResults([...results, {
+                round: gameRounds,
                 averageMovementTime: averageMovementTime,
                 id: calculateId(configuration[activatedButtons.second].width, distance),
                 buttonConfigurations: [configuration[activatedButtons.first],configuration[activatedButtons.second]],
