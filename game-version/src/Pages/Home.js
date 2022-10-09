@@ -2,7 +2,7 @@ import React from "react";
 import Animation from "../components/Animation";
 import Grid from '@mui/material/Grid';
 import { Box, Button } from "@mui/material";
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 function Home() {
 

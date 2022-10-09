@@ -154,4 +154,16 @@ const gameStatus = {
     FINISHED:'Finished'
 }
 
-export { getInitialConfiguration, activatedButtonsAt, calculateId, initialTotalID, gameStatus };
+const pickPrompt = (value) => {
+  switch (value){
+    case 1: return "Go to the Account page. Then go to the ECE Health & Safety Induction course page. Repeat 3x times"; 
+    case 2: return "Go to the Account page. Then view the mid-semester break announcement. Repeat 3x times"; 
+    case 3: return "Go to the Dashboard page. Then go to the Account page. Repeat 3x times"; 
+    case 4: return "Go to the ENGGEN 403 course page. Then view the mid-semester break announcement. Repeat 3x times"; 
+    case 5: return "Go to the ECE Health & Safety Induction course page. Then go to the ENGGEN 403 course page. Repeat 3x times"; 
+    case 6: return "View the in-person safety induction announcement. Then view the mid-semester break announcement. Repeat 3x times"; 
+   }
+
+}
+
+export { getInitialConfiguration, activatedButtonsAt, calculateId, initialTotalID, gameStatus,pickPrompt };
