@@ -2,16 +2,16 @@ import CourseOneButton from "../components/courseButtons/CourseOneButton";
 import CourseTwoButton from "../components/courseButtons/CourseTwoButton";
 import DashboardButton from "../components/menuButtons/DashboardButton";
 import ProfileButton from "../components/menuButtons/ProfileButton";
-import TodoOneButton from "../components/TodoButtons/TodoOneButton";
-import TodoTwoButton from "../components/TodoButtons/TodoTwoButton";
+import TodoOneButton from "../components/todoButtons/TodoOneButton";
+import TodoTwoButton from "../components/todoButtons/TodoTwoButton";
 
 const menuBoundary = {
   className: "menuBoundary",
   dimension: {
     top: 0,
     left: 0,
-    width: 800,
-    height: 270,
+    width: 90,
+    height: 1,
   },
 };
 
@@ -58,7 +58,6 @@ const initialConfiguration = [
     x: 200,
     y: 270,
     Button: CourseOneButton,
-    boundary: courseBoundary,
   },
   {
     width: 262,
@@ -66,7 +65,6 @@ const initialConfiguration = [
     x: 500,
     y: 270,
     Button: CourseTwoButton,
-    boundary: courseBoundary,
   },
   {
     width: 215,
@@ -74,7 +72,6 @@ const initialConfiguration = [
     x: 1000,
     y: 150,
     Button: TodoOneButton,
-    boundary: todoBoundary,
   },
   {
     width: 215,
@@ -82,7 +79,6 @@ const initialConfiguration = [
     x: 1000,
     y: 300,
     Button: TodoTwoButton,
-    boundary: todoBoundary,
   },
 ];
 
