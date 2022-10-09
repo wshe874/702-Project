@@ -19,7 +19,7 @@ const generalBoundary = {
     className: 'courseBoundary',
     dimension: {
         top: 0,
-        left: 90,
+        left: 95, // Buffer to avoid edge collision
         width: 1,
         height: 1,
     }
