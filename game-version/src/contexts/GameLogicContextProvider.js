@@ -67,10 +67,13 @@ function GameLogicContextProvider({ children }) {
       setTableColor("red");
     }
 
+    console.log(previousID + "previous id");
+    console.log(newID + "new id");
+
 
     setGameResults([...gameResults, results]);
     if (previousID > newID) {
-      if (newID < 3.5) {
+      if (newID < 3.3) {
         setPlantStage(3);
         setGameProgress(gameStatus.FINISHED);
       } else {

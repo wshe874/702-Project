@@ -5,7 +5,7 @@ import BarChart from "../components/BarChart";
 import { Box, Button, Card, CardContent, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { GameLogicContext } from "../contexts/GameLogicContextProvider";
-import { useNavigate } from "react-router-dom";
+import { GameContext } from "../contexts/GameContextProvider";
 import {CSVLink} from "react-csv";
 
 function Congratulations() {
@@ -17,7 +17,7 @@ function Congratulations() {
 
   let AttemptNumber = 0;
   const { gameResults, resetAllStates } = useContext(GameLogicContext);
-  const navigate = useNavigate();
+  const {resetConfiguration} = useContext(GameContext);
 
   const finalLabels = gameResults.map((result) => {
     AttemptNumber++;
@@ -92,6 +92,7 @@ function Congratulations() {
   };
 
   const onclickPlayAgain = () => {
+    resetConfiguration();
     resetAllStates();
   };
 

@@ -7,6 +7,35 @@ const GameContext = createContext(undefined);
 function GameContextProvider({ children }) {
     const [configuration, setConfiguration] = useState(getInitialConfiguration());
 
+    const resetConfiguration= () =>{
+        const temp = [...configuration];
+        temp[0].width = 90;
+        temp[0].height = 90;
+        temp[0].x = 0;
+        temp[0].y=90;
+        temp[1].width = 90;
+        temp[1].height = 90;
+        temp[1].x = 0;
+        temp[1].y=180;
+        temp[2].width = 262;
+        temp[2].height = 285;
+        temp[2].x = 200;
+        temp[2].y=270;
+        temp[3].width = 262;
+        temp[3].height = 285;
+        temp[3].x = 500;
+        temp[3].y=270;
+        temp[4].width = 215;
+        temp[4].height = 140;
+        temp[4].x = 1000;
+        temp[4].y=150;
+        temp[5].width = 215;
+        temp[5].height = 170;
+        temp[5].x = 1000;
+        temp[5].y=300;
+        setConfiguration(temp);
+    }
+
 
     const hasCollision = (index, x, y, width, height) => {
         for (let i = 0; i < configuration.length; i++) {
@@ -56,6 +85,7 @@ function GameContextProvider({ children }) {
         configuration,
         changePosition,
         changeSize,
+        resetConfiguration
     };
 
     return (
