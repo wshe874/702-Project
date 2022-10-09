@@ -30,7 +30,7 @@ function SizeableDraggableBox({ x, y, width, height, onPositionChange, onSizeCha
                 onResize={onResizeStop}
                 enableResizing={active}
                 disableDragging={!active}
-                bounds={boundary ? `.${boundary.className}` : undefined}
+                bounds={`.${boundary.className}`}
             >
                 {children}
             </Rnd>

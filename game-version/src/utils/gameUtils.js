@@ -15,24 +15,14 @@ const menuBoundary = {
   },
 };
 
-const courseBoundary = {
+const generalBoundary = {
     className: 'courseBoundary',
     dimension: {
-        top: 270,
+        top: 0,
         left: 90,
-        width: 710,
+        width: 1,
         height: 1,
     }
-};
-
-const todoBoundary = {
-  className: "todoBoundary",
-  dimension: {
-    top: 0,
-    left: 800,
-    width: 1,
-    height: 1,
-  },
 };
 
 const initialConfiguration = [
@@ -58,6 +48,7 @@ const initialConfiguration = [
     x: 200,
     y: 270,
     Button: CourseOneButton,
+    boundary: generalBoundary,
   },
   {
     width: 262,
@@ -65,6 +56,7 @@ const initialConfiguration = [
     x: 500,
     y: 270,
     Button: CourseTwoButton,
+    boundary: generalBoundary,
   },
   {
     width: 215,
@@ -72,6 +64,7 @@ const initialConfiguration = [
     x: 1000,
     y: 150,
     Button: TodoOneButton,
+    boundary: generalBoundary,
   },
   {
     width: 215,
@@ -79,6 +72,7 @@ const initialConfiguration = [
     x: 1000,
     y: 300,
     Button: TodoTwoButton,
+    boundary: generalBoundary,
   },
 ];
 
