@@ -147,7 +147,7 @@ function Canvas() {
             width: 1,
             height: 1,
         }}>
-        <ToastContainer autoClose={false} closeOnClick={false} />
+        <ToastContainer autoClose={false} closeOnClick={false} closeButton={false} />
             <SideBar />
             <Typography variant='h5' component='div' sx={{
                 position: 'absolute',

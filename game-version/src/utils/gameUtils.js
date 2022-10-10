@@ -2,8 +2,8 @@ import CourseOneButton from "../components/courseButtons/CourseOneButton";
 import CourseTwoButton from "../components/courseButtons/CourseTwoButton";
 import DashboardButton from "../components/menuButtons/DashboardButton";
 import ProfileButton from "../components/menuButtons/ProfileButton";
-import TodoOneButton from "../components/todoButtons/TodoOneButton";
-import TodoTwoButton from "../components/todoButtons/TodoTwoButton";
+import TodoOneButton from "../components/TodoButtons/TodoOneButton";
+import TodoTwoButton from "../components/TodoButtons/TodoTwoButton";
 
 const menuBoundary = {
   className: "menuBoundary",

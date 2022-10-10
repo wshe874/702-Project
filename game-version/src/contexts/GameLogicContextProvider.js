@@ -67,10 +67,13 @@ function GameLogicContextProvider({ children }) {
       setTableColor("red");
     }
 
+    console.log(previousID + "previous id");
+    console.log(newID + "new id");
+
 
     setGameResults([...gameResults, results]);
     if (previousID > newID) {
-      if (newID < 3.5) {
+      if (newID < 3.3) {
         setPlantStage(3);
         setGameProgress(gameStatus.FINISHED);
       } else {
@@ -85,14 +88,14 @@ function GameLogicContextProvider({ children }) {
             }
             break;
           case 2:
-            if (differenceInID / previousID > 0.15) {
+            if (differenceInID / previousID > 0.1) {
               onSuccessfulAttempt({ results: results, newID: newID, stage: 2 });
             } else {
               determineFinishByFails();
             }
             break;
           case 3:
-            if (differenceInID / previousID > 0.18) {
+            if (differenceInID / previousID > 0.1) {
               onSuccessfulAttempt({ results: results, newID: newID, stage: 3 });
               setGameProgress(gameStatus.FINISHED);
             } else {
