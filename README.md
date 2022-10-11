@@ -20,6 +20,8 @@
     <a href="#getting-started"><strong>Getting started</strong></a>
     .
     <a href="#usage"><strong>Usage</strong></a>
+    .
+    <a href="#UAHPEC-certificates"><strong>UAHPEC Certificates</strong></a>
     <br />
   </p>
     <img src="https://user-images.githubusercontent.com/68038316/194476089-f66c6e53-2307-43fc-bbfb-182cb940152c.png" width="700"/>
@@ -45,6 +47,7 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
+    <li><a href="#UAHPEC-certificates">UAHPEC Certificates</a></li>
   </ol>
 </details>
 
@@ -160,6 +163,13 @@ To get a local copy up and running follow these simple example steps.
  
  ### Static version
  A similar game flow is followed for the static version.
+ 
+ 
+<!-- UAHPEC Certificates -->
+<div id="UAHPEC-certificates"> </div>
+
+## UAHPEC-Certificates
+Please follow the [link](https://drive.google.com/file/d/1nSYuvdpqzzyjlNYUULdc-l1sVDyzRuhi/view?usp=sharing) to view the certificates stored in Google drive. Note that the document can only be viewed using the University of Auckland organisational google account.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
